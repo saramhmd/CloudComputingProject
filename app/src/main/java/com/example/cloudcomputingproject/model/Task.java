@@ -1,6 +1,7 @@
 package com.example.cloudcomputingproject.model;
 
 public class Task {
+    private String id;
     private String title;
     private boolean checked;
 
@@ -8,9 +9,18 @@ public class Task {
         // Required empty public constructor
     }
 
-    public Task(String title, boolean checked) {
+    public Task(String id, String title, boolean checked) {
+        this.id = id;
         this.title = title;
         this.checked = checked;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
