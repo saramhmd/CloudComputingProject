@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cloudcomputingproject"
     tools:overrideLibrary="com.android.car.ui">
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,13 +13,17 @@
         android:theme="@style/Theme.CloudComputingProject"
         tools:targetApi="31">
         <activity
-            android:name=".TopicsAvailableActivity"
-            android:exported="true">
+            android:name=".DoctorHome"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".TopicsAvailableActivity"
+            android:exported="false">
         </activity>
         <activity
             android:name=".MainActivity"

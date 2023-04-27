@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/drawable/transparent_background.xml" value="0.214" />
+        <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/activity_doctor_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/activity_topics_available.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/item_task.xml" value="0.264" />
+        <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
