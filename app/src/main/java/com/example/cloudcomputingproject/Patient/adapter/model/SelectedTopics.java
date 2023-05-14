@@ -1,19 +1,24 @@
-package com.example.cloudcomputingproject.model;
+package com.example.cloudcomputingproject.Patient.adapter.model;
 
+import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 public class SelectedTopics {
     private String advice;
-    private ImageView image;
+//    private String image;
     private String topicName;
 
-    public SelectedTopics(String advice,  String topicName) {
+//    private Bitmap imageBitmap;
+
+    public SelectedTopics(String advice, String topicName) {
         this.advice = advice;
 //        this.image = image;
         this.topicName = topicName;
+//        this.imageBitmap = imageBitmap;
+
     }
+
     public SelectedTopics() {
-        // Required empty public constructor
     }
 
     public String getAdvice() {
@@ -39,4 +44,12 @@ public class SelectedTopics {
     public void setTopicName(String topicName) {
         this.topicName = topicName;
     }
+
+//    public Bitmap getImageBitmap() {
+//        return imageBitmap;
+//    }
+//
+//    public void setImageBitmap(Bitmap imageBitmap) {
+//        this.imageBitmap = imageBitmap;
+//    }
 }

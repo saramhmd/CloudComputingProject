@@ -1,30 +1,23 @@
-package com.example.cloudcomputingproject;
-
-import androidx.annotation.NonNull;
+package com.example.cloudcomputingproject.Patient.adapter;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.cloudcomputingproject.adapter.MyAdapter;
-import com.example.cloudcomputingproject.model.Task;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.cloudcomputingproject.Patient.adapter.Adapter.MyAdapter;
+import com.example.cloudcomputingproject.Patient.adapter.model.Task;
+import com.example.cloudcomputingproject.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +29,6 @@ public class TopicsAvailableActivity extends AppCompatActivity {
 
     private List<Task> tasks;
     private FloatingActionButton floatingActionButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +63,41 @@ public class TopicsAvailableActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TopicsAvailableActivity.this, selectedTopicsActivity.class);
-                startActivity(intent);
+                TextView titleView = new TextView(TopicsAvailableActivity.this);
+                titleView.setText("الاشعارات");
+                titleView.setPadding(40, 40, 40, 40);
+                AlertDialog.Builder builder = new AlertDialog.Builder(TopicsAvailableActivity.this);
+
+                builder.setCustomTitle(titleView);
+                builder.setMessage("هل تريد ان يُرسل لك اشعارات بالمواضيع التي قمت باختيارها؟");
+
+                builder.setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Do something when OK button is clicked
+                        Intent intent = new Intent(TopicsAvailableActivity.this, HomePatientActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                builder.setNegativeButton("لا", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Do something when Cancel button is clicked
+                        Intent intent = new Intent(TopicsAvailableActivity.this, HomePatientActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
+
+
+
+
+//                Intent intent = new Intent(TopicsAvailableActivity.this, HomePatientActivity.class);
+////                getCheckedTopics();
+//                startActivity(intent);
             }
         });
 
@@ -98,38 +123,9 @@ public class TopicsAvailableActivity extends AppCompatActivity {
                         }
                     }
 
-//                    taskAdapter = new MyAdapter(this, tasks);
-//                    recyclerView.setAdapter(taskAdapter);
-
-
                 })
                 .addOnFailureListener(e -> Toast.makeText(TopicsAvailableActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
 
 
     }
-
-//    public void onCheckboxChanged(View view) {
-//        CheckBox checkBox = (CheckBox) view;
-//        boolean isChecked = checkBox.isChecked();
-//
-//        // Get a reference to the Firestore document
-//        DocumentReference docRef = FirebaseFirestore.getInstance().collection("topics")
-//                .document("4JOD3slHrfQieDFmFpyY");
-//
-//        // Update the document field
-//        docRef.update("isChecked", isChecked)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.d("TAG", "Document successfully updated!");
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w("TAG", "Error updating document", e);
-//                    }
-//                });
-//    }
-
 }

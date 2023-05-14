@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TopicsAvailableActivity">
-
-
+    tools:context=".Patient.adapter.TopicsAvailableActivity">
 
     <EditText
         android:layout_width="0dp"
@@ -16,8 +14,7 @@
         android:singleLine="true"
         android:textColorHint="@color/darker_grey"
         android:textSize="16sp"
-
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:imeOptions="actionSearch"
         android:drawableStart="@drawable/search"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +23,7 @@
         android:drawableTint="@color/darker_grey"
         android:drawablePadding="10dp"
         android:background="@drawable/search_background"
-        android:hint="search"/>
+        android:layoutDirection="rtl"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
@@ -44,12 +41,12 @@
         android:id="@+id/check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="28dp"
+        android:contentDescription="TODO"
         android:src="@drawable/check"
         android:tint="@color/purple_200"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="TODO" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

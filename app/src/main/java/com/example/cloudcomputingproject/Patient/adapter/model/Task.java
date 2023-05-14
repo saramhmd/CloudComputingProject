@@ -1,4 +1,4 @@
-package com.example.cloudcomputingproject.model;
+package com.example.cloudcomputingproject.Patient.adapter.model;
 
 public class Task {
     private String id;

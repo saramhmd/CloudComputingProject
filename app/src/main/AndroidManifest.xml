@@ -4,7 +4,8 @@
     package="com.example.cloudcomputingproject"
     tools:overrideLibrary="com.android.car.ui">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +16,16 @@
         android:theme="@style/Theme.CloudComputingProject"
         tools:targetApi="31">
         <activity
-            android:name=".selectedTopicsActivity"
+            android:name=".Patient.adapter.NotificationPatientActivity"
             android:exported="false" />
         <activity
-            android:name=".TopicsAvailableActivity"
+            android:name=".Patient.adapter.ProfilePatientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.adapter.HomePatientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.adapter.TopicsAvailableActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
