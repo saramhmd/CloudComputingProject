@@ -44,6 +44,15 @@
             android:background="@android:color/holo_blue_dark"
             android:text="UPDATE"
             android:textColor="@android:color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonHidden"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            android:background="@color/purple_200"
+            android:text="Hide"
+            android:textColor="@android:color/white"/>
 
     </LinearLayout>
 

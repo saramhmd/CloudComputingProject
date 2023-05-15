@@ -5,7 +5,15 @@ import com.google.firebase.firestore.ServerTimestamp;
 public class Note {
     String nameNote;
     String idNote;
+    private boolean hidden;
 
+    public Note(boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        this.hidden = hidden;
+    }
 
     public Note() {
     }

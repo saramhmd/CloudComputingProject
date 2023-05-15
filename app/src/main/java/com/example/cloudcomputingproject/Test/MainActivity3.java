@@ -28,6 +28,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class MainActivity3 extends AppCompatActivity {
@@ -37,7 +39,9 @@ public class MainActivity3 extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Note> notesItemArrayList;
     NotesRecyclerAdapter adapter;
-    Button buttonAdd;
+    Button buttonAdd ;
+    Button buttonHide;
+    ViewDialogAdd viewDialogAdd; // Declare ViewDialogAdd object
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +55,25 @@ public class MainActivity3 extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         notesItemArrayList = new ArrayList<>();
         buttonAdd = findViewById(R.id.buttonAdd);
+        buttonHide = findViewById(R.id.buttonHidden);
+
         adapter = new NotesRecyclerAdapter(MainActivity3.this, notesItemArrayList);
         recyclerView.setAdapter(adapter);
+
+        viewDialogAdd = new ViewDialogAdd(); // Instantiate ViewDialogAdd object
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ViewDialogAdd viewDialogAdd = new ViewDialogAdd();
-                viewDialogAdd.showDialog(MainActivity3.this);
+                viewDialogAdd.showDialog(MainActivity3.this); // Use the instantiated object to show the dialog
             }
         });
 
+
+
+
         readData();
+
     }
 
     private void readData() {
@@ -97,6 +108,8 @@ public class MainActivity3 extends AppCompatActivity {
             EditText textName = dialog.findViewById(R.id.textName);
             Button buttonAdd = dialog.findViewById(R.id.buttonAdd);
             Button buttonCancel = dialog.findViewById(R.id.buttonCancel);
+            Button buttonHide = dialog.findViewById(R.id.buttonHidden);
+
             buttonAdd.setText("ADD");
             buttonCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -130,6 +143,29 @@ public class MainActivity3 extends AppCompatActivity {
                                     }
                                 });
                     }
+                }
+            });
+            buttonHide.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String documentId = "documentId"; // Replace it with the actual document ID
+                    Map<String, Object> updateData = new HashMap<>();
+                    updateData.put("isHidden", true); // Update the "isHidden" field to true
+
+                    notesCollection.document(documentId).update(updateData)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(MainActivity3.this, "Document hidden successfully!", Toast.LENGTH_SHORT).show();
+                                    // Update the user interface or take any other action based on the updated state
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(MainActivity3.this, "Failed to hide document", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }
             });
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

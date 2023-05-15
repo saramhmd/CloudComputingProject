@@ -52,6 +52,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
 
         holder.textName.setText("Name: " + note.getNameNote());
 
+
         holder.buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,25 +60,48 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
                 viewDialogUpdate.showDialog(context, note.getIdNote(), note.getNameNote());
             }
         });
-
-        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+        holder.buttonHide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ViewDialogConfirmDelete viewDialogConfirmDelete = new ViewDialogConfirmDelete();
-                viewDialogConfirmDelete.showDialog(context, note.getIdNote());
+                hideNoteAndRemoveFromList(note);
             }
         });
+
+//        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ViewDialogConfirmDelete viewDialogConfirmDelete = new ViewDialogConfirmDelete();
+//                viewDialogConfirmDelete.showDialog(context, note.getIdNote());
+//            }
+//        });
     }
 
     @Override
     public int getItemCount() {
         return notesItemArrayList.size();
     }
-
+    private void hideNoteAndRemoveFromList(Note note) {
+        note.setHidden(true);
+        notesCollection.document(note.getIdNote()).set(note)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "Note hidden successfully!", Toast.LENGTH_SHORT).show();
+                        notesItemArrayList.remove(note);
+                        notifyDataSetChanged();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Failed to hide note", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textName;
         Button buttonDelete;
-        Button buttonUpdate;
+        Button buttonUpdate , buttonHide;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,6 +109,9 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
             textName = itemView.findViewById(R.id.textName);
             buttonDelete = itemView.findViewById(R.id.buttonDelete);
             buttonUpdate = itemView.findViewById(R.id.buttonUpdate);
+            buttonHide = itemView.findViewById(R.id.buttonHidden);
+
+
         }
     }
 
