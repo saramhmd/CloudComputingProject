@@ -15,13 +15,17 @@
         android:theme="@style/Theme.CloudComputingProject"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".Doctor.MedicalConsultingPhoto"
             android:exported="false" />
         <activity
             android:name=".Doctor.AddTopic"
             android:exported="false" />
         <activity
-            android:name=".Doctor.DoctorHome"
+            android:name=".Test.MainActivity3"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,14 +34,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".selectedTopicsActivity"
+            android:name=".Doctor.DoctorHome"
             android:exported="false" />
-        <activity
-            android:name=".TopicsAvailableActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".selectedTopicsActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".TopicsAvailableActivity"-->
+<!--            android:exported="false" />-->
     </application>
 
 </manifest>
