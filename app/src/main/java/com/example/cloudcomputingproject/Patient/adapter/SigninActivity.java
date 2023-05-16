@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cloudcomputingproject.DoctorHome;
+import com.example.cloudcomputingproject.Doctor.DoctorHome;
 import com.example.cloudcomputingproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -56,7 +56,7 @@ public class SigninActivity extends AppCompatActivity {
                                                         int userType = snapshot.getValue(Integer.class);
 
                                                         if (userType == 0) {
-                                                            Intent intent = new Intent(SigninActivity.this, HomePatientActivity.class);
+                                                            Intent intent = new Intent(SigninActivity.this, TopicsAvailableActivity.class);
                                                             assert user != null;
                                                             intent.putExtra("email", user.getEmail());
                                                             startActivity(intent);

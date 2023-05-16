@@ -27,6 +27,11 @@ public class User {
         this.mobile = mobile;
         this.gender = gender;
         this.userType = userType;
-        //بترىينت
+    }
+    public User(String email, String fullName, String mobile, String gender){
+        this.email = email;
+        this.fullName = fullName;
+        this.mobile = mobile;
+        this.gender = gender;
     }
 }

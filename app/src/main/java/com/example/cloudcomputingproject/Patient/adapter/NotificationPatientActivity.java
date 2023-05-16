@@ -31,7 +31,7 @@ public class NotificationPatientActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.profilePatient:
-                        startActivity(new Intent(NotificationPatientActivity.this, ProfilePatientActivity.class));
+                        startActivity(new Intent(NotificationPatientActivity.this, ProfileActivity.class));
                         return true;
 
                     case R.id.notificationPatient:

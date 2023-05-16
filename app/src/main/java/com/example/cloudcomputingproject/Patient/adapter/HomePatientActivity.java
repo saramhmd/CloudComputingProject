@@ -45,7 +45,7 @@ public class HomePatientActivity extends AppCompatActivity {
                 case R.id.homePatient:
                     return true;
                 case R.id.profilePatient:
-                    startActivity(new Intent(HomePatientActivity.this, ProfilePatientActivity.class));
+                    startActivity(new Intent(HomePatientActivity.this, ProfileActivity.class));
                     return true;
                 case R.id.notificationPatient:
                     startActivity(new Intent(HomePatientActivity.this, NotificationPatientActivity.class));
