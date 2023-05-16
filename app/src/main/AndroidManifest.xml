@@ -5,7 +5,6 @@
     tools:overrideLibrary="com.android.car.ui">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,16 +15,19 @@
         android:theme="@style/Theme.CloudComputingProject"
         tools:targetApi="31">
         <activity
-            android:name=".DoctorORPatient"
+            android:name=".MainActivity4"
             android:exported="false" />
         <activity
-            android:name=".DoctorHome"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Patient.adapter.SigninActivity"
+            android:name=".Doctor.MedicalConsultingPhoto"
             android:exported="false" />
         <activity
-            android:name=".Patient.adapter.SignupActivity"
+            android:name=".Doctor.AddTopic"
+            android:exported="false" />
+        <activity
+            android:name=".Test.MainActivity3"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,19 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Patient.adapter.NotificationPatientActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Patient.adapter.ProfilePatientActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Patient.adapter.HomePatientActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Patient.adapter.TopicsAvailableActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".Doctor.DoctorHome"
             android:exported="false" />
     </application>
 

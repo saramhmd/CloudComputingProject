@@ -3,12 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/drawable/rounded_border.xml" value="0.2085" />
         <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/drawable/transparent_background.xml" value="0.214" />
+        <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/activity_add_topic.xml" value="0.264" />
         <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/activity_doctor_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/activity_medical_consulting_photo.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/activity_topics_available.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/item_task.xml" value="0.264" />
+        <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/layout/selected_topic_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/al-khateb/AndroidStudioProjects/CloudComputingProject/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/drawable/edittext_bg.xml" value="0.1285" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1285" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/drawable/note_item.xml" value="0.1285" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/drawable/note_item_bg.xml" value="0.1285" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/layout/activity_main2.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/layout/activity_main3.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/layout/alert_dilog.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/layout/item_task.xml" value="0.15833333333333333" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/layout/note_item.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/pc/CloudComputingProject/app/src/main/res/layout/view_delete.xml" value="0.17291666666666666" />
       </map>
     </option>
   </component>
