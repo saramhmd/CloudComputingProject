@@ -19,10 +19,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Profile"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:textAlignment="center"
+            android:layoutDirection="rtl"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="#15437A"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,7 +59,7 @@
                 android:text="Email:"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="@color/black" />
+                android:textColor="#15437A" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -66,7 +67,7 @@
                 android:id="@+id/email"
                 android:hint="loading"
                 android:padding="8dp"
-                android:textColor="@color/black"/>
+                android:textColor="#15437A"/>
 
         </LinearLayout>
 
@@ -87,7 +88,7 @@
                 android:text="FullName:"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textColor="#15437A" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -95,7 +96,7 @@
                 android:id="@+id/name"
                 android:hint="loading"
                 android:padding="8dp"
-                android:textColor="@color/black"/>
+                android:textColor="#15437A"/>
 
         </LinearLayout>
 
@@ -114,7 +115,7 @@
                 android:text="Phone:"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="@color/black" />
+                android:textColor="#15437A" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -123,7 +124,7 @@
                 android:padding="8dp"
                 android:hint="loading"
                 android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                android:textColor="#15437A"/>
 
 
 
@@ -145,7 +146,7 @@
                 android:text="Gender:"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="@color/black" />
+                android:textColor="#15437A" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -170,6 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
+                android:textColor="#7D8C9E"
                 android:text="Do you want to modify your data? click here" />
         </LinearLayout>
 

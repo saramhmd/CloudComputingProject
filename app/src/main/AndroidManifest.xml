@@ -18,6 +18,9 @@
             android:name=".Patient.adapter.UpdateDataActivity"
             android:exported="false" />
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Patient.adapter.UploadProfilePicture"
             android:exported="false" />
         <activity
@@ -37,23 +40,21 @@
             android:exported="false" />
         <activity
             android:name=".Patient.adapter.SignupActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".DoctorOrPatient"
-            android:exported="false"/>
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
 
         <activity
             android:name=".Test.MainActivity4"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".Doctor.MedicalConsultingPhoto"
             android:exported="false" />

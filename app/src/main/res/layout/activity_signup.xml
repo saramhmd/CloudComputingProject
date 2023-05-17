@@ -29,7 +29,7 @@
                 android:textSize="36sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="#15437A"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -60,22 +60,66 @@
                 android:id="@+id/signup_mobile"
                 android:layout_marginTop="30dp"
                 android:padding="8dp"
-                android:inputType="textEmailAddress"
+                android:inputType="phone"
                 android:hint="Mobile *"
-                android:drawableLeft="@drawable/fullname"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/signup_gender"
-                android:layout_marginTop="30dp"
-                android:padding="8dp"
-                android:hint="Gender"
                 android:drawableLeft="@drawable/baseline_install_mobile_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:padding="8dp"
+                    android:drawablePadding="8dp"
+                    android:drawableLeft="@drawable/baseline_transgender_24"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"/>
+
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/radio_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="Male"
+                        android:textSize="16sp" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+
+<!--            <EditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:id="@+id/signup_gender"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:padding="8dp"-->
+<!--                android:hint="Gender"-->
+<!--                android:drawableLeft="@drawable/baseline_install_mobile_24"-->
+<!--                android:drawablePadding="8dp"-->
+<!--                android:textColor="@color/black"/>-->
 
             <EditText
                 android:layout_width="match_parent"
