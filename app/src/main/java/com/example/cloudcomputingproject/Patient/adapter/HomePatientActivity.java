@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import com.example.cloudcomputingproject.Patient.adapter.Adapter.MyAdapter2;
-import com.example.cloudcomputingproject.Patient.adapter.model.SelectedTopics;
+import com.example.cloudcomputingproject.Adapter.MyAdapter2;
+import com.example.cloudcomputingproject.model.SelectedTopics;
 import com.example.cloudcomputingproject.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -22,6 +22,7 @@ public class HomePatientActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<SelectedTopics> mData;
+    BottomNavigationView nav;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -36,7 +37,7 @@ public class HomePatientActivity extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        BottomNavigationView nav = findViewById(R.id.bottomNavigationViewPatient);
+        nav = findViewById(R.id.bottomNavigationViewPatient);
         nav.setSelectedItemId(R.id.homePatient);
 
         nav.setOnNavigationItemSelectedListener(item -> {
@@ -48,9 +49,6 @@ public class HomePatientActivity extends AppCompatActivity {
                     return true;
                 case R.id.notificationPatient:
                     startActivity(new Intent(HomePatientActivity.this, NotificationPatientActivity.class));
-                    return true;
-                case R.id.msgPatient:
-                    startActivity(new Intent(HomePatientActivity.this, MsgActivity.class));
                     return true;
                 default:
                     return false;
@@ -81,10 +79,9 @@ public class HomePatientActivity extends AppCompatActivity {
 
                             String advice = document.getString("advice");
                             String topicName = document.getString("topicName");
-//                            String imageUrl = selectedTopics.getImage();
-                            String imageUrl = document.getString("image");
+                            String image = document.getString("image");
 
-                            SelectedTopics task1 = new SelectedTopics(advice,topicName,imageUrl);
+                            SelectedTopics task1 = new SelectedTopics(advice,topicName);
                             mData.add(task1);
                         }
                         MyAdapter2 adapter = new MyAdapter2(HomePatientActivity.this, mData);
