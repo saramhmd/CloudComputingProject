@@ -30,8 +30,6 @@ import com.squareup.picasso.Picasso;
 
 public class ProfileDoctor extends AppCompatActivity {
 
-//    BottomNavigationView nav;
-
     String email, mobile, name, gender;
 
     TextView emailTv,phoneTv, nameTv, genderTv, updateDataTv;
@@ -129,7 +127,7 @@ public class ProfileDoctor extends AppCompatActivity {
 
                     Uri uri = firebaseUser.getPhotoUrl();
 
-                    Picasso.with(ProfileDoctor.this).load(uri).into(imageView);
+                    Picasso.get().load(uri).into(imageView);
                 }else {
                     Toast.makeText(ProfileDoctor.this, "Something error", Toast.LENGTH_SHORT).show();
                 }

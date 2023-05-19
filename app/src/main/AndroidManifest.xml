@@ -15,7 +15,7 @@
         android:theme="@style/Theme.CloudComputingProject"
         tools:targetApi="31">
         <activity
-            android:name=".MsgActivity"
+            android:name=".Patient.adapter.MsgActivity"
             android:exported="false" />
         <activity
             android:name=".Doctor.ProfileDoctor"

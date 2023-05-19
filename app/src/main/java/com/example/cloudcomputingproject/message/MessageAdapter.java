@@ -15,6 +15,8 @@ import com.example.cloudcomputingproject.R;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHolder> {
 
     private final List<MessageList> messageLists;
@@ -41,9 +43,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
         return messageLists.size();
     }
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        private ImageView profilePic;
+        private CircleImageView profilePic;
         private TextView name, lastMsg, unseenMsg;
-//wfwds
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             profilePic = itemView.findViewById(R.id.profilePic);

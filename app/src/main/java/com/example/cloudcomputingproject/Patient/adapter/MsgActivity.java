@@ -1,5 +1,6 @@
 package com.example.cloudcomputingproject.Patient.adapter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,15 @@ import android.os.Bundle;
 
 import com.example.cloudcomputingproject.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MsgActivity extends AppCompatActivity {
 
@@ -17,6 +27,7 @@ public class MsgActivity extends AppCompatActivity {
     private String email;
     private String name;
     private RecyclerView rvMsg;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().getDatabase().getReferenceFromUrl("https://mobile-cloud-application-default-rtdb.firebaseio.com/");
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -24,8 +35,13 @@ public class MsgActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_msg);
 
+        final CircleImageView userProfilePic = findViewById(R.id.userProfilePic);
+
         rvMsg = findViewById(R.id.msgRv);
 
+        mobile = getIntent().getStringExtra("mobile");
+        email = getIntent().getStringExtra("email");
+        name = getIntent().getStringExtra("name");
 
 
 
@@ -57,6 +73,22 @@ public class MsgActivity extends AppCompatActivity {
             }
 
 
+        });
+
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final String profilePicUrl = snapshot.child("Users").child(mobile).child("profile_pic").getValue(String.class);
+
+                Picasso.get().load(profilePicUrl).into(userProfilePic);
+//                userProfilePic.
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
     }
 }

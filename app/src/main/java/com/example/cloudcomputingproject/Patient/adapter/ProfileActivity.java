@@ -124,7 +124,8 @@ public class ProfileActivity extends AppCompatActivity {
 
                     Uri uri = firebaseUser.getPhotoUrl();
 
-                    Picasso.with(ProfileActivity.this).load(uri).into(imageView);
+//                    Picasso.get();
+                    Picasso.get().load(uri).into(imageView);
                 }else {
                     Toast.makeText(ProfileActivity.this, "Something error", Toast.LENGTH_SHORT).show();
                 }

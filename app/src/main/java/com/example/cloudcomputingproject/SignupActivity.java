@@ -1,4 +1,4 @@
-package com.example.cloudcomputingproject.Patient.adapter;
+package com.example.cloudcomputingproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -13,19 +13,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cloudcomputingproject.Doctor.DoctorHome;
-import com.example.cloudcomputingproject.MainActivity;
-import com.example.cloudcomputingproject.Patient.adapter.model.SelectedTopics;
-import com.example.cloudcomputingproject.R;
+import com.example.cloudcomputingproject.Patient.adapter.TopicsAvailableActivity;
+import com.example.cloudcomputingproject.Patient.adapter.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignupActivity extends AppCompatActivity {
+
+//    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("https://mobile-cloud-application-default-rtdb.firebaseio.com/");
 
     RadioGroup radioGroupGender;
     RadioButton radioButtonSelected;
@@ -33,6 +37,7 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
 
 
         EditText editTextSignupEmail = findViewById(R.id.signup_email);
@@ -74,7 +79,27 @@ public class SignupActivity extends AppCompatActivity {
             } else if (TextUtils.isEmpty(mobile)) {
                 editTextMobile.setError("Fill in the mobile field");
             } else {
-
+//////////////////////////////////////////////////////////////////
+//                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if (snapshot.child("Users").hasChild(mobile)){
+//                            Toast.makeText(SignupActivity.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
+//                        }else {
+//                            reference.child("Users").child(mobile).child("email").setValue(email);
+//                            reference.child("Users").child(mobile).child("fullName").setValue(name);
+//
+//                            Toast.makeText(SignupActivity.this, "Success", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+////////////////////////////////////////////////////////////////////////
                 textGender = radioButtonSelected.getText().toString();
                 registerUser(uid, name, email, pass, mobile, textGender);
 
@@ -86,11 +111,16 @@ public class SignupActivity extends AppCompatActivity {
     private void registerUser(String uid, String name, String email, String pass, String mobile, String gender) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
+
+
+
         auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(SignupActivity.this,
                 new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+
                             String uid = task.getResult().getUser().getUid();
 
 
@@ -116,6 +146,9 @@ public class SignupActivity extends AppCompatActivity {
                                             firebaseUser.sendEmailVerification();
                                             Toast.makeText(SignupActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(SignupActivity.this, TopicsAvailableActivity.class);
+                                            intent.putExtra("mobile", mobile);
+                                            intent.putExtra("name", name);
+                                            intent.putExtra("email", email);
                                             startActivity(intent);
                                             finish();
                                         }else {
@@ -148,6 +181,9 @@ public class SignupActivity extends AppCompatActivity {
                                             firebaseUser.sendEmailVerification();
                                             Toast.makeText(SignupActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(SignupActivity.this, DoctorHome.class);
+                                            intent.putExtra("mobile", mobile);
+                                            intent.putExtra("name", name);
+                                            intent.putExtra("email", email);
                                             startActivity(intent);
                                             finish();
                                         }else {
