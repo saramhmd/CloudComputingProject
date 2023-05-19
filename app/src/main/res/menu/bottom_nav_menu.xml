@@ -2,24 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-    android:id="@+id/profile"
+    android:id="@+id/profileDoctor"
     android:icon="@drawable/ic_baseline_person_24"
-    android:title="Profile"/>
+    android:title="لصفحة الشخصية"/>
 
     <item
-        android:id="@+id/track"
+        android:id="@+id/trackDoctor"
         android:icon="@drawable/ic_baseline_search_24"
-        android:title="Track"/>
+        android:title="التتبع"/>
 
     <item
-        android:id="@+id/notification"
+        android:id="@+id/notificationDoctor"
         android:icon="@drawable/ic_baseline_notifications_24"
-        android:title="Notification"/>
+        android:title="الاشعارات"/>
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeDoctor"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"/>
+        android:title="الصفحة الرئيسية"/>
 
 
 </menu>

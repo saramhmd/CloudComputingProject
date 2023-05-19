@@ -25,11 +25,22 @@
         android:background="@drawable/search_background"
         android:layoutDirection="rtl"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:text="قم باختيار المواضيع المهتم بها"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#15437A"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="409dp"
         android:layout_height="729dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -46,6 +57,7 @@
         android:contentDescription="TODO"
         android:src="@drawable/check"
         android:backgroundTint="#15437A"
+        app:tint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

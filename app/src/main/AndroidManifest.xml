@@ -15,11 +15,29 @@
         android:theme="@style/Theme.CloudComputingProject"
         tools:targetApi="31">
         <activity
+            android:name=".MsgActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Doctor.ProfileDoctor"
+            android:exported="false" />
+        <activity
+            android:name=".Doctor.TrackDoctor"
+            android:exported="false" />
+        <activity
+            android:name=".Doctor.NotificationDoctor"
+            android:exported="false" />
+        <activity
             android:name=".Patient.adapter.UpdateDataActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Patient.adapter.UploadProfilePicture"
             android:exported="false" />
@@ -36,33 +54,19 @@
             android:name=".Patient.adapter.NotificationPatientActivity"
             android:exported="false" />
         <activity
-            android:name=".Patient.adapter.SigninActivity"
+            android:name=".SigninActivity"
             android:exported="false" />
         <activity
-            android:name=".Patient.adapter.SignupActivity"
+            android:name=".SignupActivity"
             android:exported="true" />
-
         <activity
             android:name=".DoctorOrPatient"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".Test.MainActivity4"
-            android:exported="false" />
-
+            android:exported="true" />
         <activity
             android:name=".Doctor.MedicalConsultingPhoto"
             android:exported="false" />
         <activity
             android:name=".Doctor.AddTopic"
-            android:exported="false" />
-        <activity
-            android:name=".Test.MainActivity3"
             android:exported="false" />
         <activity
             android:name=".Doctor.DoctorHome"

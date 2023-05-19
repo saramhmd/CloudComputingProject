@@ -1,4 +1,4 @@
-package com.example.cloudcomputingproject.Patient.adapter;
+package com.example.cloudcomputingproject.Doctor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cloudcomputingproject.Patient.adapter.HomePatientActivity;
+import com.example.cloudcomputingproject.Patient.adapter.NotificationPatientActivity;
+import com.example.cloudcomputingproject.Patient.adapter.ProfileActivity;
+import com.example.cloudcomputingproject.Patient.adapter.UpdateDataActivity;
+import com.example.cloudcomputingproject.Patient.adapter.UploadProfilePicture;
+import com.example.cloudcomputingproject.Patient.adapter.User;
 import com.example.cloudcomputingproject.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,20 +28,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-public class ProfileActivity extends AppCompatActivity {
-    BottomNavigationView nav;
+public class ProfileDoctor extends AppCompatActivity {
+
+//    BottomNavigationView nav;
 
     String email, mobile, name, gender;
 
     TextView emailTv,phoneTv, nameTv, genderTv, updateDataTv;
     ImageView imageView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
+        setContentView(R.layout.activity_profile_doctor);
 
         emailTv = findViewById(R.id.email);
         nameTv = findViewById(R.id.name);
@@ -46,12 +51,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.imageView);
         imageView.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfileActivity.this, UploadProfilePicture.class);
+            Intent intent = new Intent(ProfileDoctor.this, UploadProfilePicture.class);
             startActivity(intent);
         });
 
         updateDataTv.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfileActivity.this, UpdateDataActivity.class);
+            Intent intent = new Intent(ProfileDoctor.this, UpdateDataActivity.class);
             startActivity(intent);
         });
 
@@ -60,7 +65,7 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
         if (firebaseUser == null){
-            Toast.makeText(ProfileActivity.this, "something error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ProfileDoctor.this, "something error", Toast.LENGTH_SHORT).show();
         }else {
             showUserProfile(firebaseUser);
         }
@@ -70,26 +75,26 @@ public class ProfileActivity extends AppCompatActivity {
 
         //navigation code
 
-        nav = findViewById(R.id.bottomNavigationViewPatient);
-        nav.setSelectedItemId(R.id.profilePatient);
+        BottomNavigationView nav = findViewById(R.id.bottomNavigationView);
+        nav.setSelectedItemId(R.id.profileDoctor);
 
         nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.homePatient:
-                        startActivity(new Intent(ProfileActivity.this, HomePatientActivity.class));
+                    case R.id.homeDoctor:
+                        startActivity(new Intent(ProfileDoctor.this, DoctorHome.class));
                         return true;
 
-                    case R.id.profilePatient:
+                    case R.id.profileDoctor:
                         return true;
 
-                    case R.id.notificationPatient:
-                        startActivity(new Intent(ProfileActivity.this, NotificationPatientActivity.class));
+                    case R.id.notificationDoctor:
+                        startActivity(new Intent(ProfileDoctor.this, NotificationDoctor.class));
                         return true;
 
-                    case R.id.msgPatient:
-                        startActivity(new Intent(ProfileActivity.this, MsgActivity.class));
+                    case R.id.trackDoctor:
+                        startActivity(new Intent(ProfileDoctor.this, TrackDoctor.class));
                         return true;
 
                     default:
@@ -124,18 +129,17 @@ public class ProfileActivity extends AppCompatActivity {
 
                     Uri uri = firebaseUser.getPhotoUrl();
 
-                    Picasso.with(ProfileActivity.this).load(uri).into(imageView);
+                    Picasso.with(ProfileDoctor.this).load(uri).into(imageView);
                 }else {
-                    Toast.makeText(ProfileActivity.this, "Something error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileDoctor.this, "Something error", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ProfileActivity.this, "error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileDoctor.this, "error", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
 }
-

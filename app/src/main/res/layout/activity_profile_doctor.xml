@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Patient.adapter.ProfileActivity"
+    tools:context=".Doctor.ProfileDoctor"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -191,12 +191,11 @@
             app:fabCradleVerticalOffset="10dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationViewPatient"
+                android:id="@+id/bottomNavigationView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-40dp"
-                android:gravity="center_vertical"
-                app:menu="@menu/bottom_nav_menu_patient"
+                android:layout_marginRight="16dp"
+                app:menu="@menu/bottom_nav_menu"
                 android:background="@drawable/transparent_background"
                 />
         </com.google.android.material.bottomappbar.BottomAppBar>

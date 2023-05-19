@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Patient.adapter.SignupActivity"
+    tools:context=".SignupActivity"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -38,6 +38,7 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="FullName *"
+                android:maxLines="1"
                 android:drawableLeft="@drawable/fullname"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -50,6 +51,7 @@
                 android:padding="8dp"
                 android:inputType="textEmailAddress"
                 android:hint="Email *"
+                android:maxLines="1"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -61,6 +63,7 @@
                 android:layout_marginTop="30dp"
                 android:padding="8dp"
                 android:inputType="phone"
+                android:maxLines="1"
                 android:hint="Mobile *"
                 android:drawableLeft="@drawable/baseline_install_mobile_24"
                 android:drawablePadding="8dp"

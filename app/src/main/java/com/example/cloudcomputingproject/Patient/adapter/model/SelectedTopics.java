@@ -5,14 +5,14 @@ import android.widget.ImageView;
 
 public class SelectedTopics {
     private String advice;
-//    private String image;
+    private String image;
     private String topicName;
 
 //    private Bitmap imageBitmap;
 
-    public SelectedTopics(String advice, String topicName) {
+    public SelectedTopics(String advice, String topicName, String image) {
         this.advice = advice;
-//        this.image = image;
+        this.image = image;
         this.topicName = topicName;
 //        this.imageBitmap = imageBitmap;
 
@@ -29,13 +29,13 @@ public class SelectedTopics {
         this.advice = advice;
     }
 
-//    public String getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(String image) {
-//        this.image = image;
-//    }
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getTopicName() {
         return topicName;

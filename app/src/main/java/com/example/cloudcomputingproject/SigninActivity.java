@@ -1,4 +1,4 @@
-package com.example.cloudcomputingproject.Patient.adapter;
+package com.example.cloudcomputingproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cloudcomputingproject.Doctor.DoctorHome;
-import com.example.cloudcomputingproject.R;
+import com.example.cloudcomputingproject.Patient.adapter.TopicsAvailableActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

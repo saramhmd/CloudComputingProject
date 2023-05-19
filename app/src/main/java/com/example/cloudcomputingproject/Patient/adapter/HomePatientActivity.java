@@ -22,7 +22,6 @@ public class HomePatientActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<SelectedTopics> mData;
-    BottomNavigationView nav;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -37,7 +36,7 @@ public class HomePatientActivity extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        nav = findViewById(R.id.bottomNavigationViewPatient);
+        BottomNavigationView nav = findViewById(R.id.bottomNavigationViewPatient);
         nav.setSelectedItemId(R.id.homePatient);
 
         nav.setOnNavigationItemSelectedListener(item -> {
@@ -49,6 +48,9 @@ public class HomePatientActivity extends AppCompatActivity {
                     return true;
                 case R.id.notificationPatient:
                     startActivity(new Intent(HomePatientActivity.this, NotificationPatientActivity.class));
+                    return true;
+                case R.id.msgPatient:
+                    startActivity(new Intent(HomePatientActivity.this, MsgActivity.class));
                     return true;
                 default:
                     return false;
@@ -79,8 +81,10 @@ public class HomePatientActivity extends AppCompatActivity {
 
                             String advice = document.getString("advice");
                             String topicName = document.getString("topicName");
+//                            String imageUrl = selectedTopics.getImage();
+                            String imageUrl = document.getString("image");
 
-                            SelectedTopics task1 = new SelectedTopics(advice,topicName);
+                            SelectedTopics task1 = new SelectedTopics(advice,topicName,imageUrl);
                             mData.add(task1);
                         }
                         MyAdapter2 adapter = new MyAdapter2(HomePatientActivity.this, mData);
