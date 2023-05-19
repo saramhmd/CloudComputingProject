@@ -1,4 +1,4 @@
-package com.example.cloudcomputingproject.Patient.adapter.Adapter;
+package com.example.cloudcomputingproject.Adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -12,9 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cloudcomputingproject.Patient.adapter.TopicsAvailableActivity;
 import com.example.cloudcomputingproject.R;
-import com.example.cloudcomputingproject.Patient.adapter.model.Task;
+import com.example.cloudcomputingproject.model.Task;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;

@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-    android:id="@+id/profile"
+    android:id="@+id/home"
     android:icon="@drawable/ic_baseline_person_24"
-    android:title="Profile"/>
+    android:title="Home"/>
 
     <item
         android:id="@+id/track"
@@ -17,9 +17,9 @@
         android:title="Notification"/>
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/profile"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"/>
+        android:title="Profile"/>
 
 
 </menu>

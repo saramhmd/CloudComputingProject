@@ -1,20 +1,17 @@
-package com.example.cloudcomputingproject.Patient.adapter.Adapter;
+package com.example.cloudcomputingproject.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 //import com.bumptech.glide.Glide;
-import com.example.cloudcomputingproject.Patient.adapter.HomePatientActivity;
 import com.example.cloudcomputingproject.R;
-import com.example.cloudcomputingproject.Patient.adapter.model.SelectedTopics;
-import com.google.android.gms.tasks.Task;
+import com.example.cloudcomputingproject.model.SelectedTopics;
 
 import java.util.ArrayList;
 import java.util.List;
