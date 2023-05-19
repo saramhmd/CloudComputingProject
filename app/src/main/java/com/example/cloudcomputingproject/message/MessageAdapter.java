@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.helper.widget.Layer;
 import androidx.recyclerview.widget.RecyclerView;
-//;dcmskdmcklsd
 
 import com.example.cloudcomputingproject.R;
 
@@ -44,7 +43,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     static class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView profilePic;
         private TextView name, lastMsg, unseenMsg;
-
+//wfwds
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             profilePic = itemView.findViewById(R.id.profilePic);
