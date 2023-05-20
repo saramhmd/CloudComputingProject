@@ -4,12 +4,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 //import com.bumptech.glide.Glide;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.cloudcomputingproject.R;
 import com.example.cloudcomputingproject.model.SelectedTopics;
 
@@ -46,24 +50,26 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyAdapter2.ViewHolder holder, int position) {
         SelectedTopics selectedTopics = mmData.get(position);
+        RequestOptions requestOptions = new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.ALL);
         holder.advice.setText(selectedTopics.getAdvice());
         holder.topicName.setText(selectedTopics.getTopicName());
-//        Glide.with(context).load(selectedTopics.getImage())
-//                .into(holder.image);
+        Glide.with(context).load(selectedTopics.getImageUri())
+                .into(holder.image);
 
     }
 
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-//        ImageView image;
+        ImageView image;
         TextView advice;
         TextView topicName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.advice = itemView.findViewById(R.id.advice);
-//            image = (ImageView) itemView.findViewById(R.id.imageView2);
+            image = (ImageView) itemView.findViewById(R.id.imageView2);
             this.topicName = itemView.findViewById(R.id.topicName);
         }
     }

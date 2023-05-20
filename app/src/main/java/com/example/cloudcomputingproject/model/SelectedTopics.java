@@ -10,9 +10,10 @@ public class SelectedTopics {
 
 
 
-    public SelectedTopics(String advice, String topicName ) {
+    public SelectedTopics(String advice, String topicName, String imageUri ) {
         this.advice = advice;
         this.topicName = topicName;
+        this.imageUri = imageUri;
     }
 
     public String getImageUri() {

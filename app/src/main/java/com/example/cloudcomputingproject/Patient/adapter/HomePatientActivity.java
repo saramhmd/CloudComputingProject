@@ -50,6 +50,9 @@ public class HomePatientActivity extends AppCompatActivity {
                 case R.id.notificationPatient:
                     startActivity(new Intent(HomePatientActivity.this, NotificationPatientActivity.class));
                     return true;
+                case R.id.msgPatient:
+                    startActivity(new Intent(HomePatientActivity.this, MsgActivity.class));
+                    return true;
                 default:
                     return false;
             }
@@ -81,7 +84,7 @@ public class HomePatientActivity extends AppCompatActivity {
                             String topicName = document.getString("topicName");
                             String image = document.getString("image");
 
-                            SelectedTopics task1 = new SelectedTopics(advice,topicName);
+                            SelectedTopics task1 = new SelectedTopics(advice,topicName,image);
                             mData.add(task1);
                         }
                         MyAdapter2 adapter = new MyAdapter2(HomePatientActivity.this, mData);

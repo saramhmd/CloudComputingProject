@@ -29,7 +29,6 @@ public class MsgActivity extends AppCompatActivity {
     private RecyclerView rvMsg;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().getDatabase().getReferenceFromUrl("https://mobile-cloud-application-default-rtdb.firebaseio.com/");
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,7 @@ public class MsgActivity extends AppCompatActivity {
         rvMsg.setLayoutManager(new LinearLayoutManager(this));
 
         BottomNavigationView nav = findViewById(R.id.bottomNavigationViewPatient);
-        nav.setSelectedItemId(R.id.notificationPatient);
+        nav.setSelectedItemId(R.id.msgPatient);
 
         nav.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {

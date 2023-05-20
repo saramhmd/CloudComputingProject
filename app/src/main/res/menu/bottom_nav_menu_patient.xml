@@ -13,14 +13,15 @@
         android:title="الاشعارات"/>
 
     <item
+        android:id="@+id/msgPatient"
+        android:icon="@drawable/baseline_message_24"
+        android:title="الرسائل"/>
+    <item
         android:id="@+id/homePatient"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="الصفحة الرئيسية"/>
 
-    <item
-        android:id="@+id/msgPatient"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="الرسائل"/>
+
 
 
 </menu>
