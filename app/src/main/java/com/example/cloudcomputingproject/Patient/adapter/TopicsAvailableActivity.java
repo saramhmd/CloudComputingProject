@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.cloudcomputingproject.Adapter.MyAdapter;
+import com.example.cloudcomputingproject.Patient.adapter.Adapter.MyAdapter;
 import com.example.cloudcomputingproject.model.Task;
 import com.example.cloudcomputingproject.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

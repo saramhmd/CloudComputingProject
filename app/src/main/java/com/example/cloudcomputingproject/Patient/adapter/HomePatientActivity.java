@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import com.example.cloudcomputingproject.Adapter.MyAdapter2;
+import android.view.View;
+import android.widget.AdapterView;
+
+import com.example.cloudcomputingproject.Patient.adapter.Adapter.MyAdapter2;
 import com.example.cloudcomputingproject.model.SelectedTopics;
 import com.example.cloudcomputingproject.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,10 +21,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomePatientActivity extends AppCompatActivity {
+public class HomePatientActivity extends AppCompatActivity implements MyAdapter2.ItemClickListener{
 
     private RecyclerView recyclerView;
     private List<SelectedTopics> mData;
+
     BottomNavigationView nav;
 
     @SuppressLint("NonConstantResourceId")
@@ -33,6 +37,7 @@ public class HomePatientActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MyAdapter2 myAdapter2 = new MyAdapter2(this, mData);
+
         recyclerView.setAdapter(myAdapter2);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -65,34 +70,45 @@ public class HomePatientActivity extends AppCompatActivity {
         CollectionReference topicsRef = FirebaseFirestore.getInstance().collection("topics");
         Query query = topicsRef.whereEqualTo("isChecked", true);
         query.get().addOnSuccessListener(queryDocumentSnapshots -> {
-            List<String> topicIds = new ArrayList<>();
+            List<String> topicNames = new ArrayList<>();
+
             for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
-                // Retrieve the topicId from the document
-                String topicId = document.getId();
-                topicIds.add(topicId);
+                String topicName = document.getString("topicName");
+                topicNames.add(topicName);
             }
 
                 // Retrieve the advice from the "medical consulting" collection based on the topicId
                 CollectionReference medicalConsultingRef = FirebaseFirestore.getInstance().collection("medical consulting");
-                medicalConsultingRef.whereIn("topicId", topicIds).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                medicalConsultingRef.whereIn("topicName", topicNames).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<SelectedTopics> mData = new ArrayList<>();
                         for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
 
+                            String id = document.getId();
                             String advice = document.getString("advice");
                             String topicName = document.getString("topicName");
                             String image = document.getString("image");
 
-                            SelectedTopics task1 = new SelectedTopics(advice,topicName,image);
+                            SelectedTopics task1 = new SelectedTopics(id,advice,topicName,image);
                             mData.add(task1);
                         }
                         MyAdapter2 adapter = new MyAdapter2(HomePatientActivity.this, mData);
+                        adapter.setClickListener(HomePatientActivity.this);
+
                         recyclerView.setAdapter(adapter);
                     }
                 });
 
         });
+    }
 
+    @Override
+    public void onItemClick(SelectedTopics selectedTopic, String id) {
+        Intent intent = new Intent(HomePatientActivity.this, DetailsActivity.class);
+        intent.putExtra("selectedTopic", selectedTopic);
+        intent.putExtra("topicId", id);
+        startActivity(intent);
+        finish();
     }
 }

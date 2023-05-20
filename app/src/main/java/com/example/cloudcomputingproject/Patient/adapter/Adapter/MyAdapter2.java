@@ -1,5 +1,6 @@
-package com.example.cloudcomputingproject.Adapter;
+package com.example.cloudcomputingproject.Patient.adapter.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 //import com.bumptech.glide.Glide;
@@ -22,6 +24,19 @@ import java.util.List;
 
 public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
     private List<SelectedTopics> mmData;
+    private ItemClickListener mClickListener;
+    private LayoutInflater mInflater;
+
+
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(SelectedTopics selectedTopic, String id);
+    }
+
+
     Context context;
 
     public MyAdapter2(Context context, List<SelectedTopics> mData) {
@@ -34,11 +49,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
 
     }
 
-    @Override
-    public int getItemCount() {
-        return mmData.size();
-    }
-
     @NonNull
     @Override
     public MyAdapter2.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,7 +59,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
     ///bn
 
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter2.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyAdapter2.ViewHolder holder,  @SuppressLint("RecyclerView") final int position) {
         SelectedTopics selectedTopics = mmData.get(position);
         RequestOptions requestOptions = new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.ALL);
@@ -57,21 +67,44 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
         holder.topicName.setText(selectedTopics.getTopicName());
         Glide.with(context).load(selectedTopics.getImageUri())
                 .into(holder.image);
-
+        holder.setId(selectedTopics.getId());
     }
 
+    @Override
+    public int getItemCount() {
+        return mmData.size();
+    }
 
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private String id;
         ImageView image;
         TextView advice;
         TextView topicName;
+        public CardView card;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             this.advice = itemView.findViewById(R.id.advice);
             image = (ImageView) itemView.findViewById(R.id.imageView2);
             this.topicName = itemView.findViewById(R.id.topicName);
+            this.card = itemView.findViewById(R.id.card);
+
+
+        }
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (mClickListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    mClickListener.onItemClick(mmData.get(position), id);
+                }
+            }
         }
     }
 }
