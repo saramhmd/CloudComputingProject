@@ -46,6 +46,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
                 .inflate(R.layout.selected_topic_item, parent, false);
         return new MyAdapter2.ViewHolder(view);
     }
+    ///bn
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter2.ViewHolder holder, int position) {
