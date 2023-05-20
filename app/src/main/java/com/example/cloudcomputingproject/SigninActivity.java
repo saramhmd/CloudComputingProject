@@ -102,7 +102,7 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
 
-        signupTxt.setOnClickListener(view -> startActivity(new Intent(SigninActivity.this, SignupActivity.class)));
+        signupTxt.setOnClickListener(view -> startActivity(new Intent(SigninActivity.this, com.example.cloudcomputingproject.SignupActivity.class)));
     }
 }
 

@@ -24,9 +24,7 @@ import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity {
     BottomNavigationView nav;
-
     String email, mobile, name, gender;
-
     TextView emailTv,phoneTv, nameTv, genderTv, updateDataTv;
     ImageView imageView;
 
@@ -124,8 +122,9 @@ public class ProfileActivity extends AppCompatActivity {
 
                     Uri uri = firebaseUser.getPhotoUrl();
 
-//                    Picasso.get();
+                 //   Picasso.with(ProfileActivity.this).load(uri).into(imageView);
                     Picasso.get().load(uri).into(imageView);
+
                 }else {
                     Toast.makeText(ProfileActivity.this, "Something error", Toast.LENGTH_SHORT).show();
                 }

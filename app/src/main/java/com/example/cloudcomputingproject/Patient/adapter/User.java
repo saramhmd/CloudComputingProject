@@ -20,6 +20,26 @@ public class User {
     public User() {
     }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
     public User(String uid, String email, String fullName, String mobile, String gender, int userType) {
         this.uid = uid;
         this.email = email;
