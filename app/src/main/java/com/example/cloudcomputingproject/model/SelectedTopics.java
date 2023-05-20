@@ -1,9 +1,6 @@
 package com.example.cloudcomputingproject.model;
 
-import java.io.Serializable;
-
-public class SelectedTopics implements Serializable {
-    private String id;
+public class SelectedTopics {
     private String advice;
     private String imageUri;
     private String topicName;
@@ -13,35 +10,10 @@ public class SelectedTopics implements Serializable {
 
 
 
-    public SelectedTopics(String id, String advice, String topicName, String imageUri ) {
-        this.id = id;
+    public SelectedTopics(String advice, String topicName, String imageUri ) {
         this.advice = advice;
         this.topicName = topicName;
         this.imageUri = imageUri;
-    }
-
-    public SelectedTopics(String id, String advice, String topicName, String imageUri, String videoUri ) {
-        this.id = id;
-        this.advice = advice;
-        this.topicName = topicName;
-        this.imageUri = imageUri;
-        this.videoUri = videoUri;
-    }
-
-    public void setVideoUri(String videoUri) {
-        this.videoUri = videoUri;
-    }
-
-    public String getVideoUri() {
-        return videoUri;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getImageUri() {
@@ -55,7 +27,9 @@ public class SelectedTopics implements Serializable {
     public SelectedTopics(String imageUri) {
         this.imageUri = imageUri;
     }
-
+//    public SelectedTopics(String videoUri) {
+//        this.videoUri = videoUri;
+//    }
 
     public String getAdvice() {
         return advice;
