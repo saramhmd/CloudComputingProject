@@ -4,9 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.cloudcomputingproject.Patient.adapter.HomePatientActivity;
@@ -30,6 +35,8 @@ public class AllAccountsActivity extends AppCompatActivity {
 
     private ListView listViewAccounts;
     private List<User> userList;
+    private List<User> filteredUserList;
+
     private ArrayAdapter<String> arrayAdapter;
     private List<String> accountsList;
 
@@ -37,6 +44,29 @@ public class AllAccountsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_list);
+
+        filteredUserList = new ArrayList<>();
+
+
+//        EditText searchBar = findViewById(R.id.search);
+
+        EditText searchEditText = findViewById(R.id.search);
+        searchEditText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                performSearch(searchEditText.getText().toString().trim().toLowerCase());
+                return true;
+            }
+            return false;
+        });
+
+
+//        search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Perform the search action
+//                performSearch();
+//            }
+//        });
 
         BottomNavigationView nav = findViewById(R.id.bottomNavigationViewPatient);
         nav.setSelectedItemId(R.id.msgPatient);
@@ -64,6 +94,8 @@ public class AllAccountsActivity extends AppCompatActivity {
 
 
         });
+
+
 
         listViewAccounts = findViewById(R.id.list_view_accounts);
         userList = new ArrayList<>();
@@ -108,4 +140,48 @@ public class AllAccountsActivity extends AppCompatActivity {
             }
         });
     }
+
+//    private void performSearch() {
+//        EditText searchEditText = findViewById(R.id.search_edit_text);
+//        String searchText = searchEditText.getText().toString().trim().toLowerCase();
+//
+//        // Clear the filtered list
+//        filteredUserList.clear();
+//
+//        // Perform the search in the original user list
+//        for (User user : userList) {
+//            if (user.getFullName().toLowerCase().contains(searchText)) {
+//                filteredUserList.add(user);
+//            }
+//        }
+//
+//        // Update the adapter with the filtered list
+//        arrayAdapter.clear();
+//        for (User filteredUser : filteredUserList) {
+//            arrayAdapter.add(filteredUser.getFullName());
+//        }
+//        arrayAdapter.notifyDataSetChanged();
+//    }
+
+
+    private void performSearch(String searchText) {
+        // Clear the filtered list
+        filteredUserList.clear();
+
+        // Perform the search in the original user list
+        for (User user : userList) {
+            if (user.getFullName().toLowerCase().contains(searchText)) {
+                filteredUserList.add(user);
+            }
+        }
+
+        // Update the adapter with the filtered list
+        arrayAdapter.clear();
+        for (User filteredUser : filteredUserList) {
+            arrayAdapter.add(filteredUser.getFullName());
+        }
+        arrayAdapter.notifyDataSetChanged();
+    }
+
+
 }

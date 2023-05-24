@@ -39,8 +39,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctorHome extends AppCompatActivity {
-//    implements HomeAdapter.ItemClickListener, HomeAdapter.ItemClickListener2
+public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemClickListener, HomeAdapter.ItemClickListener2
+{
 
     BottomNavigationView nav;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
