@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="صفحة التعديل"
-        android:backgroundTint="#437EC7"
+        android:textColor="#15437A"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
 
     <Button
         android:id="@+id/UpdateVideo"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:background="@drawable/rounded_border"
@@ -71,7 +71,7 @@
 
     <Button
         android:id="@+id/UpdatePhoto"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:text="تعديل صورة"
@@ -85,10 +85,10 @@
 
     <Button
         android:id="@+id/UpdateTopic"
-        android:layout_width="177dp"
+        android:layout_width="230dp"
         android:layout_height="50dp"
         android:layout_marginTop="61dp"
-        android:text="تعديل موضوع"
+        android:text="تعديل الكل"
         android:textSize="20sp"
         android:backgroundTint="#437EC7"
         app:cornerRadius="20dp"
@@ -96,6 +96,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UpdateVideo" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

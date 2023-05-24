@@ -1,11 +1,15 @@
 package com.example.cloudcomputingproject.Doctor;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.cloudcomputingproject.R;
@@ -19,12 +23,19 @@ public class TopicDetails extends AppCompatActivity {
     private boolean playWhenReady = true;
     private int currentWindow = 0;
     private long playbackPosition = 0;
+    Button editBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_details);
-
+        editBtn = findViewById(R.id.editBtn);
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TopicDetails.this, Updates_Topic.class));
+            }
+        });
         PlayerView playerView = findViewById(R.id.playerView);
 
         TextView topicNameTextView = findViewById(R.id.topicNameTextView);
@@ -46,7 +57,7 @@ public class TopicDetails extends AppCompatActivity {
             player.setMediaItem(mediaItem);
             player.prepare();
         } else {
-            Toast.makeText(TopicDetails.this, "Upload successful00000000000000000", Toast.LENGTH_SHORT).show();
+            Toast.makeText(TopicDetails.this, "No Video", Toast.LENGTH_SHORT).show();
         }
         playerView.setPlayer(player);
 

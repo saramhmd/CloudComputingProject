@@ -77,6 +77,15 @@
                 android:textSize="15sp"
                 android:textColor="@android:color/black" />
 
+            <Button
+                android:id="@+id/editBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="17sp"
+                android:text="تعديل "
+                android:textColor="@color/white"/>
+
 
             <!-- Add more TextViews or other views for additional details if needed -->
 
@@ -92,17 +101,29 @@
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="650dp"
+            android:layout_marginTop="680dp"
             android:layout_marginRight="20dp"
             android:layoutDirection="rtl"
-            android:textSize="18sp"
             android:text="رجوع"
-            android:textColor="#0000EE" />
+            android:textColor="#0000EE"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/addMedicalConsultingButton"
+            android:layout_width="177dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="61dp"
+            android:background="@drawable/rounded_border"
+            android:backgroundTint="#437EC7"
+            android:text="تحديث الموضوع"
+            android:textSize="20sp"
+            app:cornerRadius="20dp" />
+
         <View
             android:layout_width="40dp"
             android:layout_height="1dp"
+            android:layout_below="@id/back"
             android:layout_marginLeft="335dp"
-            android:background="#0000EE"
-            android:layout_below="@id/back" />
+            android:background="#0000EE" />
     </LinearLayout>
 </RelativeLayout>
