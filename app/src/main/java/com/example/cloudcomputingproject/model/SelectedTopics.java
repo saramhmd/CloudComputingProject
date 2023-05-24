@@ -3,7 +3,7 @@ package com.example.cloudcomputingproject.model;
 import java.io.Serializable;
 
 public class SelectedTopics  implements Serializable {
-    private String id;
+    public String id;
     private String advice;
     private String imageUri;
     private String topicName;
@@ -13,6 +13,10 @@ public class SelectedTopics  implements Serializable {
 
 
 
+    public SelectedTopics(String advice, String topicName, String imageUri ) {
+        this.advice = advice;
+        this.topicName = topicName;
+        this.imageUri = imageUri;}
     public SelectedTopics(String id, String advice, String topicName, String imageUri ) {
         this.id = id;
         this.advice = advice;

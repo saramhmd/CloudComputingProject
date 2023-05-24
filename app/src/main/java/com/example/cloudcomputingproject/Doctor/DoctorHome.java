@@ -39,9 +39,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemClickListener, HomeAdapter.ItemClickListener2
-{
-
+public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemClickListener, HomeAdapter.ItemClickListener2 {
     BottomNavigationView nav;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<SelectedTopics> mData = new ArrayList<>();
@@ -53,84 +51,81 @@ public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        rv = findViewById(R.id.rvTopic);
-//        rv.setLayoutManager(new LinearLayoutManager(this));
-//        adapter = new HomeAdapter(this, mData, this, this);
-//        rv.setAdapter(adapter);
-//        getAllSelectedTopics();
-//
-//
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(DoctorHome.this, AddTopic.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        nav = findViewById(R.id.bottomNavigationView);
-//        nav.setSelectedItemId(R.id.homeDoctor);
-//
-//        nav.setOnNavigationItemSelectedListener(item -> {
-//            switch (item.getItemId()) {
-//                case R.id.homeDoctor:
-//                    return true;
-//                case R.id.profileDoctor:
-//                    startActivity(new Intent(DoctorHome.this, ProfileDoctor.class));
-//                    return true;
-//                case R.id.notificationDoctor:
-//                    startActivity(new Intent(DoctorHome.this, NotificationDoctor.class));
-//                    return true;
-//                case R.id.trackDoctor:
-//                    startActivity(new Intent(DoctorHome.this, TrackDoctor.class));
-//                    return true;
-//                default:
-//                    return false;
-//            }
-//        });
-//    }
-//
-//    private void getAllSelectedTopics() {
-//
-//        db.collection("medical consulting").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//                @Override
-//                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                    for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
-//                        String advice = document.getString("advice");
-//                        String topicName = document.getString("topicName");
-//                        String image = document.getString("image");
-//
-//                        SelectedTopics task1 = new SelectedTopics(advice,topicName,image);
-//                        mData.add(task1);
-//                        rv.setLayoutManager(layoutManager);
-//                        rv.setHasFixedSize(true);
-//                        rv.setAdapter(adapter);
-//                        adapter.notifyDataSetChanged();
-//                        Log.e("LogDATA", task1.toString());
-//                    }
-////                    rv.setAdapter(adapter);
-//                    Log.e("Sara", " onSuccess  ");
-//
-//                }
-//            }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Log.e("Sara", " onFailure  ");
-//
-//            }
-//        });
-//    }
-//
-//
-//    @Override
-//    public void onItemClick(int position, String id) {
-//
-//    }
-//
-//    @Override
-//    public void onItemClick2(int position, String id) {
-//
-//    }
+        FloatingActionButton fab = findViewById(R.id.fab);
+        rv = findViewById(R.id.rvTopic);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new HomeAdapter(this, mData, this, this);
+        rv.setAdapter(adapter);
+        getAllSelectedTopics();
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DoctorHome.this, AddTopic.class);
+                startActivity(intent);
+            }
+        });
+
+        nav = findViewById(R.id.bottomNavigationView);
+        nav.setSelectedItemId(R.id.homeDoctor);
+
+        nav.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.homeDoctor:
+                    return true;
+                case R.id.profileDoctor:
+                    startActivity(new Intent(DoctorHome.this, ProfileDoctor.class));
+                    return true;
+                case R.id.notificationDoctor:
+                    startActivity(new Intent(DoctorHome.this, NotificationDoctor.class));
+                    return true;
+                case R.id.trackDoctor:
+                    startActivity(new Intent(DoctorHome.this, TrackDoctor.class));
+                    return true;
+                default:
+                    return false;
+            }
+        });
+    }
+
+    private void getAllSelectedTopics() {
+
+        db.collection("medical consulting").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                    String advice = document.getString("advice");
+                    String topicName = document.getString("topicName");
+                    String image = document.getString("image");
+                    SelectedTopics task1 = new SelectedTopics(advice, topicName, image);
+                    mData.add(task1);
+                    rv.setLayoutManager(layoutManager);
+                    rv.setHasFixedSize(true);
+                    rv.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    Log.e("LogDATA", task1.toString());
+                }
+//                    rv.setAdapter(adapter);
+                Log.e("Sara", " onSuccess  ");
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e("Sara", " onFailure  ");
+
+            }
+        });
+    }
+
+
+    @Override
+    public void onItemClick(int position, String id) {
+
+    }
+
+    @Override
+    public void onItemClick2(int position, String id) {
     }
 }
