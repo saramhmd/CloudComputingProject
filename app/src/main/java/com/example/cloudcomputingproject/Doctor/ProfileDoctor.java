@@ -31,7 +31,6 @@ import com.squareup.picasso.Picasso;
 public class ProfileDoctor extends AppCompatActivity {
 
     String email, mobile, name, gender;
-
     TextView emailTv,phoneTv, nameTv, genderTv, updateDataTv;
     ImageView imageView;
 
@@ -68,9 +67,6 @@ public class ProfileDoctor extends AppCompatActivity {
             showUserProfile(firebaseUser);
         }
 
-
-
-
         //navigation code
 
         BottomNavigationView nav = findViewById(R.id.bottomNavigationView);
@@ -98,11 +94,8 @@ public class ProfileDoctor extends AppCompatActivity {
                     default:
                         return false;
                 }
-
-
             }
         });
-
         //////////////////////////////////////////////////////////////////////////////
     }
 
@@ -139,5 +132,4 @@ public class ProfileDoctor extends AppCompatActivity {
             }
         });
     }
-
 }

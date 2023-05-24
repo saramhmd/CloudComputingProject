@@ -37,16 +37,13 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-
-
+        
         EditText editTextSignupEmail = findViewById(R.id.signup_email);
         EditText editTextSignupPassword = findViewById(R.id.signup_password);
         EditText editTextFullName = findViewById(R.id.signup_fullName);
         EditText editTextMobile = findViewById(R.id.signup_mobile);
         radioGroupGender = findViewById(R.id.radio_group);
         radioGroupGender.clearCheck();
-//        EditText editTextGender = findViewById(R.id.signup_gender);
         Button signupBtn = findViewById(R.id.signup_btn);
         TextView loginTxt = findViewById(R.id.loginText);
         String uid = null;
@@ -63,8 +60,6 @@ public class SignupActivity extends AppCompatActivity {
 
             int selectedGenderId = radioGroupGender.getCheckedRadioButtonId();
             radioButtonSelected = findViewById(selectedGenderId);
-
-//            String gender = editTextGender.getText().toString().trim();
 
             if (TextUtils.isEmpty(email)) {
                 editTextSignupEmail.setError("Fill in the email field");
@@ -172,64 +167,31 @@ public class SignupActivity extends AppCompatActivity {
 
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
 
-                                reference.child(firebaseUser.getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
+                                reference.child(firebaseUser.getUid()).setValue(user).addOnCompleteListener(task1 -> {
 
-                                        if (task.isSuccessful()){
+                                    if (task1.isSuccessful()){
 
-                                            firebaseUser.sendEmailVerification();
-                                            Toast.makeText(SignupActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(SignupActivity.this, DoctorHome.class);
-                                            intent.putExtra("mobile", mobile);
-                                            intent.putExtra("name", name);
-                                            intent.putExtra("email", email);
-                                            startActivity(intent);
-                                            finish();
-                                        }else {
-                                            Toast.makeText(SignupActivity.this, "User registered failed", Toast.LENGTH_SHORT).show();
-
-                                        }
+                                        firebaseUser.sendEmailVerification();
+                                        Toast.makeText(SignupActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(SignupActivity.this, DoctorHome.class);
+                                        intent.putExtra("mobile", mobile);
+                                        intent.putExtra("name", name);
+                                        intent.putExtra("email", email);
+                                        startActivity(intent);
+                                        finish();
+                                    }else {
+                                        Toast.makeText(SignupActivity.this, "User registered failed", Toast.LENGTH_SHORT).show();
 
                                     }
+
                                 });
 
                             }else {
                                 Toast.makeText(SignupActivity.this, "eeeeeeeeeeeeerrrrrrrrroooooorrrrrr", Toast.LENGTH_SHORT).show();
                             }
 
-//                            User user = new User(uid,email,name,mobile,gender,0);
-//                            User user1 = new User(uid,email,name,mobile,gender,0);
-//                            firebaseDatabase.getReference().child("Users").child(uid).setValue(user);
 
                             Toast.makeText(SignupActivity.this, "User Register Successfully", Toast.LENGTH_SHORT).show();
-
-//                            FirebaseUser firebaseUser = auth.getCurrentUser();
-//
-//                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
-//                            firebaseUser.updateProfile(profileChangeRequest);
-
-//                            User user = new User(uid,email,name,mobile,gender,0);
-//                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-//
-//                            reference.child(firebaseUser.getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//
-//                                    if (task.isSuccessful()){
-//
-//                                        firebaseUser.sendEmailVerification();
-//                                        Toast.makeText(SignupActivity.this, "User registered successfully, Please Login to save your data", Toast.LENGTH_SHORT).show();
-//                                        Intent intent = new Intent(SignupActivity.this, SigninActivity.class);
-//                                        startActivity(intent);
-//                                        finish();
-//                                    }else {
-//                                        Toast.makeText(SignupActivity.this, "User registered failed", Toast.LENGTH_SHORT).show();
-//
-//                                    }
-//
-//                                }
-//                            });
                         }
                     }
                 });

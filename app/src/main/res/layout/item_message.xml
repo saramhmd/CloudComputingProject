@@ -7,11 +7,13 @@
         android:id="@+id/senderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="name sender"/>
 
     <TextView
         android:id="@+id/messageTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="content_message"/>
 
 </LinearLayout>

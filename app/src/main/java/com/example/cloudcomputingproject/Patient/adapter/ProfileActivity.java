@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cloudcomputingproject.R;
+import com.example.cloudcomputingproject.message.AllAccountsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -87,7 +88,7 @@ public class ProfileActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.msgPatient:
-                        startActivity(new Intent(ProfileActivity.this, MsgActivity.class));
+                        startActivity(new Intent(ProfileActivity.this, AllAccountsActivity.class));
                         return true;
 
                     default:

@@ -9,9 +9,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.cloudcomputingproject.Patient.adapter.HomePatientActivity;
+import com.example.cloudcomputingproject.Patient.adapter.MsgActivity;
+import com.example.cloudcomputingproject.Patient.adapter.NotificationPatientActivity;
+import com.example.cloudcomputingproject.Patient.adapter.ProfileActivity;
 import com.example.cloudcomputingproject.Patient.adapter.User;
 import com.example.cloudcomputingproject.R;
 import com.example.cloudcomputingproject.chat.ChatActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,6 +38,33 @@ public class AllAccountsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_list);
 
+        BottomNavigationView nav = findViewById(R.id.bottomNavigationViewPatient);
+        nav.setSelectedItemId(R.id.msgPatient);
+
+        nav.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.homePatient:
+                    startActivity(new Intent(AllAccountsActivity.this, HomePatientActivity.class));
+                    return true;
+
+                case R.id.profilePatient:
+                    startActivity(new Intent(AllAccountsActivity.this, ProfileActivity.class));
+                    return true;
+
+                case R.id.msgPatient:
+                    return true;
+
+                case R.id.notificationPatient:
+                    startActivity(new Intent(AllAccountsActivity.this, NotificationPatientActivity.class));
+                    return true;
+
+                default:
+                    return false;
+            }
+
+
+        });
+
         listViewAccounts = findViewById(R.id.list_view_accounts);
         userList = new ArrayList<>();
         accountsList = new ArrayList<>();
@@ -44,7 +76,7 @@ public class AllAccountsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // استرجاع معلومات الحساب المحدد
                 User selectedUser = userList.get(position);
-                String selectedEmail = selectedUser.getEmail();
+                String selectedEmail = selectedUser.getFullName();
                 String selectedId = selectedUser.getUid();
 
                 // إنشاء Intent لتمرير بيانات الحساب إلى ChatActivity
@@ -64,7 +96,7 @@ public class AllAccountsActivity extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         User user = snapshot.getValue(User.class);
                         userList.add(user);
-                        accountsList.add(user.getEmail());
+                        accountsList.add(user.getFullName());
                     }
                     arrayAdapter.notifyDataSetChanged();
                 }

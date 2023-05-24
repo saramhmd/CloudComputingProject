@@ -30,7 +30,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     @NonNull
     @Override
     public MessageAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item,null));
+        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, null));
     }
 
     @Override
@@ -42,6 +42,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     public int getItemCount() {
         return messageLists.size();
     }
+
     static class MyViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView profilePic;
         private TextView name, lastMsg, unseenMsg;

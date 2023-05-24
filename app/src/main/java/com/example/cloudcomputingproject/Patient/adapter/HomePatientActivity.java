@@ -5,19 +5,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-
 import com.example.cloudcomputingproject.Patient.adapter.Adapter.MyAdapter2;
+import com.example.cloudcomputingproject.message.AllAccountsActivity;
 import com.example.cloudcomputingproject.model.SelectedTopics;
 import com.example.cloudcomputingproject.R;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +36,6 @@ public class HomePatientActivity extends AppCompatActivity implements MyAdapter2
 
         recyclerView.setAdapter(myAdapter2);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
         nav = findViewById(R.id.bottomNavigationViewPatient);
         nav.setSelectedItemId(R.id.homePatient);
 
@@ -56,7 +50,7 @@ public class HomePatientActivity extends AppCompatActivity implements MyAdapter2
                     startActivity(new Intent(HomePatientActivity.this, NotificationPatientActivity.class));
                     return true;
                 case R.id.msgPatient:
-                    startActivity(new Intent(HomePatientActivity.this, MsgActivity.class));
+                    startActivity(new Intent(HomePatientActivity.this, AllAccountsActivity.class));
                     return true;
                 default:
                     return false;
@@ -77,27 +71,25 @@ public class HomePatientActivity extends AppCompatActivity implements MyAdapter2
                 topicNames.add(topicName);
             }
 
-                // Retrieve the advice from the "medical consulting" collection based on the topicId
-                CollectionReference medicalConsultingRef = FirebaseFirestore.getInstance().collection("medical consulting");
-                medicalConsultingRef.whereIn("topicName", topicNames).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<SelectedTopics> mData = new ArrayList<>();
-                        for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+            CollectionReference medicalConsultingRef = FirebaseFirestore.getInstance().collection("medical consulting");
+                medicalConsultingRef.whereIn("topicName", topicNames).get().addOnSuccessListener(queryDocumentSnapshots1 -> {
+                    List<SelectedTopics> mData = new ArrayList<>();
+                    for (DocumentSnapshot document : queryDocumentSnapshots1.getDocuments()) {
 
-                            String id = document.getId();
-                            String advice = document.getString("advice");
-                            String topicName = document.getString("topicName");
-                            String image = document.getString("image");
+                        String id = document.getId();
+                        String advice = document.getString("advice");
+                        String topicName = document.getString("topicName");
+                        String image = document.getString("image");
+                        String videoUri = document.getString("video");
 
-                            SelectedTopics task1 = new SelectedTopics(id,advice,topicName,image);
-                            mData.add(task1);
-                        }
-                        MyAdapter2 adapter = new MyAdapter2(HomePatientActivity.this, mData);
-                        adapter.setClickListener(HomePatientActivity.this);
 
-                        recyclerView.setAdapter(adapter);
+                        SelectedTopics task1 = new SelectedTopics(id,advice,topicName,image,videoUri);
+                        mData.add(task1);
                     }
+                    MyAdapter2 adapter = new MyAdapter2(HomePatientActivity.this, mData);
+                    adapter.setClickListener(HomePatientActivity.this);
+
+                    recyclerView.setAdapter(adapter);
                 });
 
         });

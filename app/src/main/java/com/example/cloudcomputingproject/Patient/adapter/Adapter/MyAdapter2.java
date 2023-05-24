@@ -5,28 +5,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-//import com.bumptech.glide.Glide;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.cloudcomputingproject.R;
 import com.example.cloudcomputingproject.model.SelectedTopics;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
     private List<SelectedTopics> mmData;
     private ItemClickListener mClickListener;
-    private LayoutInflater mInflater;
-
 
     public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
@@ -46,7 +39,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
         }else {
             this.mmData = mData;
         }
-
     }
 
     @NonNull
@@ -56,13 +48,10 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
                 .inflate(R.layout.selected_topic_item, parent, false);
         return new MyAdapter2.ViewHolder(view);
     }
-    ///bn
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter2.ViewHolder holder,  @SuppressLint("RecyclerView") final int position) {
         SelectedTopics selectedTopics = mmData.get(position);
-        RequestOptions requestOptions = new RequestOptions()
-                .diskCacheStrategy(DiskCacheStrategy.ALL);
         holder.advice.setText(selectedTopics.getAdvice());
         holder.topicName.setText(selectedTopics.getTopicName());
         Glide.with(context).load(selectedTopics.getImageUri())
@@ -81,7 +70,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
         TextView advice;
         TextView topicName;
         public CardView card;
-
+        ImageButton playButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,8 +78,8 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
             this.advice = itemView.findViewById(R.id.advice);
             image = (ImageView) itemView.findViewById(R.id.imageView2);
             this.topicName = itemView.findViewById(R.id.topicName);
+            playButton = itemView.findViewById(R.id.playerView);
             this.card = itemView.findViewById(R.id.card);
-
 
         }
         public void setId(String id) {
