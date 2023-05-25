@@ -18,7 +18,7 @@ public class TrackDoctor extends AppCompatActivity {
         setContentView(R.layout.activity_track_doctor);
 
         nav = findViewById(R.id.bottomNavigationView);
-        nav.setSelectedItemId(R.id.trackDoctor);
+        nav.setSelectedItemId(R.id.msgDoctor);
 
         nav.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -31,7 +31,7 @@ public class TrackDoctor extends AppCompatActivity {
                 case R.id.notificationDoctor:
                     startActivity(new Intent(TrackDoctor.this, NotificationDoctor.class));
                     return true;
-                case R.id.trackDoctor:
+                case R.id.msgDoctor:
                     return true;
                 default:
                     return false;

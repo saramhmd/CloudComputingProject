@@ -87,7 +87,7 @@ public class ProfileDoctor extends AppCompatActivity {
                         startActivity(new Intent(ProfileDoctor.this, NotificationDoctor.class));
                         return true;
 
-                    case R.id.trackDoctor:
+                    case R.id.msgDoctor:
                         startActivity(new Intent(ProfileDoctor.this, TrackDoctor.class));
                         return true;
 

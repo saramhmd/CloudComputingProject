@@ -30,22 +30,36 @@ public class TopicDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_details);
         editBtn = findViewById(R.id.editBtn);
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(TopicDetails.this, Updates_Topic.class));
-            }
-        });
+
         PlayerView playerView = findViewById(R.id.playerView);
 
         TextView topicNameTextView = findViewById(R.id.topicNameTextView);
         TextView adviceTextView = findViewById(R.id.adviceTextView);
         ImageView imageView = findViewById(R.id.imageView);
         TextView back = findViewById(R.id.back);
+
         back.setOnClickListener(view -> startActivity(new Intent(TopicDetails.this, DoctorHome.class)));
 
         Intent intent = getIntent();
         SelectedTopics selectedTopic = (SelectedTopics) intent.getSerializableExtra("selectedTopic");
+
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(TopicDetails.this, Updates_Topic.class);
+                        intent.putExtra("selectedTopic", selectedTopic);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
+
+
 
         adviceTextView.setText(selectedTopic.getAdvice());
         topicNameTextView.setText(selectedTopic.getTopicName());

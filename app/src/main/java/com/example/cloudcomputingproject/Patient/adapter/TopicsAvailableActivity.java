@@ -1,4 +1,5 @@
 package com.example.cloudcomputingproject.Patient.adapter;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,13 +17,18 @@ import android.widget.Toast;
 import com.example.cloudcomputingproject.Patient.adapter.Adapter.MyAdapter;
 import com.example.cloudcomputingproject.model.Task;
 import com.example.cloudcomputingproject.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TopicsAvailableActivity extends AppCompatActivity {
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private RecyclerView recyclerView;
     private MyAdapter taskAdapter;
@@ -76,6 +83,16 @@ public class TopicsAvailableActivity extends AppCompatActivity {
                         // Do something when OK button is clicked
                         Intent intent = new Intent(TopicsAvailableActivity.this, HomePatientActivity.class);
                         startActivity(intent);
+                        FirebaseMessaging.getInstance().subscribeToTopic("Samar")
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull com.google.android.gms.tasks.Task<Void> task) {
+                                        Log.e("tag", "Done");
+                                        if (!task.isSuccessful()){
+                                            Log.e("tag", "Failed");
+                                        }
+                                    }
+                                });
                     }
                 });
 
@@ -122,10 +139,15 @@ public class TopicsAvailableActivity extends AppCompatActivity {
                             taskAdapter.notifyDataSetChanged();
                         }
                     }
-
                 })
                 .addOnFailureListener(e -> Toast.makeText(TopicsAvailableActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
 
 
+    }
+    public void trackGroupSelection(String groupId, String groupName) {
+        Bundle bundle = new Bundle();
+        bundle.putString("group_id", groupId);
+        bundle.putString("group_name", groupName);
+        mFirebaseAnalytics.logEvent("group_selection", bundle);
     }
 }

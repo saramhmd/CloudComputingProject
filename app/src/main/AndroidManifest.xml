@@ -16,13 +16,17 @@
         android:theme="@style/Theme.CloudComputingProject"
         tools:targetApi="31">
         <activity
+            android:name=".Doctor.UpdateVideo"
+            android:exported="false" />
+        <activity
+            android:name=".Doctor.UpdateTopicImage"
+            android:exported="false" />
+        <activity
             android:name=".message.AllAccountsActivity"
             android:exported="true" />
-
         <activity
             android:name=".chat.ChatActivity"
             android:exported="false" />
-
         <activity
             android:name=".Patient.adapter.MsgActivity"
             android:exported="false" />
@@ -39,11 +43,8 @@
             android:name=".Patient.adapter.UpdateDataActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" >
-
-        </activity>
-
+            android:name=".Doctor.DoctorHome"
+            android:exported="false" />
         <activity
             android:name=".Patient.adapter.UploadProfilePicture"
             android:exported="false" />
@@ -55,8 +56,7 @@
             android:exported="false" />
         <activity
             android:name=".Patient.adapter.TopicsAvailableActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".Patient.adapter.NotificationPatientActivity"
             android:exported="false" />
@@ -77,12 +77,15 @@
             android:exported="false" />
         <activity
             android:name=".Doctor.TopicDetails"
-            android:exported="false" />
+            android:exported="true" />
+        <activity
+            android:name=".Doctor.Updates_Topic"
+            android:exported="true" />
         <activity
             android:name=".Doctor.AddTopic"
             android:exported="false" />
         <activity
-            android:name=".Doctor.DoctorHome"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

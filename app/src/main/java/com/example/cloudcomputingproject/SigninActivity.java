@@ -13,19 +13,23 @@ import android.widget.Toast;
 
 import com.example.cloudcomputingproject.Doctor.DoctorHome;
 import com.example.cloudcomputingproject.Patient.adapter.TopicsAvailableActivity;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class SigninActivity extends AppCompatActivity {
-
+    private FirebaseAnalytics mFirebaseAnalytics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
@@ -81,16 +85,16 @@ public class SigninActivity extends AppCompatActivity {
                                                 }
                                             });
 
-//                                    FirebaseUser user1 = firebaseAuth.getCurrentUser();
-//                                    Intent intent = new Intent(SigninActivity.this, MainActivity.class);
-//                                    assert user != null;
-//                                    intent.putExtra("email", user.getEmail());
-//                                    startActivity(intent);
-//                                    finish();
+
                                 } else {
                                     Toast.makeText(SigninActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 }
+                                Bundle bundle = new Bundle();
+                                bundle.putString(FirebaseAnalytics.Param.METHOD, "email"); // يمكنك تحديد طريقة تسجيل الدخول هنا
+
+                                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
+
                             });
                 }else {
                     loginPassword.setError("Fill the pass field");
@@ -105,4 +109,3 @@ public class SigninActivity extends AppCompatActivity {
         signupTxt.setOnClickListener(view -> startActivity(new Intent(SigninActivity.this, com.example.cloudcomputingproject.SignupActivity.class)));
     }
 }
-

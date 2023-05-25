@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.cloudcomputingproject.R;
 import com.example.cloudcomputingproject.message.AllAccountsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -99,8 +100,11 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        //////////////////////////////////////////////////////////////////////////////
-    }
+        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(ProfileActivity.this);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "profile_page");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Profile Page");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);    }
 
 
     private void showUserProfile(FirebaseUser firebaseUser) {

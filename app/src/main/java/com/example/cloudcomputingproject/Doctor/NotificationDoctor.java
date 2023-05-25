@@ -29,7 +29,7 @@ public class NotificationDoctor extends AppCompatActivity {
                     return true;
                 case R.id.notificationDoctor:
                     return true;
-                case R.id.trackDoctor:
+                case R.id.msgDoctor:
                     startActivity(new Intent(NotificationDoctor.this, TrackDoctor.class));
                     return true;
                 default:

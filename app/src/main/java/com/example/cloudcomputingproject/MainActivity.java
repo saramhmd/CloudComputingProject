@@ -1,31 +1,30 @@
 package com.example.cloudcomputingproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
+import com.example.cloudcomputingproject.DoctorOrPatient;
+import com.example.cloudcomputingproject.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
     Handler h = new Handler();
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // قم بتهيئة Firebase Analytics
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        // سجّل حدث فتح التطبيق
+        logAppOpenEvent();
+
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -33,7 +32,31 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         }, 5000);
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // سجّل حدث استئناف التطبيق
+        logAppResumeEvent();
+    }
+
+    private void logAppOpenEvent() {
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Splash Screen");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "MainActivity");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "app_open");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "App Open");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.APP_OPEN, bundle);
+    }
+
+    private void logAppResumeEvent() {
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Main Screen");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "MainActivity");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "app_resume");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "App Resume");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+    }
 }

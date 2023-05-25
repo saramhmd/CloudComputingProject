@@ -34,13 +34,13 @@
             android:id="@+id/playerView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:resize_mode="fill"
             android:layout_marginTop="220dp"
+            app:resize_mode="fill"
             app:show_buffering="always"
             app:show_shuffle_button="false"
             app:use_controller="true" />
 
-    <TextView
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"

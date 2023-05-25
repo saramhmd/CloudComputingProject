@@ -62,7 +62,7 @@ public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemCli
                 case R.id.notificationDoctor:
                     startActivity(new Intent(DoctorHome.this, NotificationDoctor.class));
                     return true;
-                case R.id.trackDoctor:
+                case R.id.msgDoctor:
                     startActivity(new Intent(DoctorHome.this, TrackDoctor.class));
                     return true;
                 default:

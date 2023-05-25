@@ -25,16 +25,16 @@
         android:id="@+id/editTextUpdateAdvice"
         android:layout_width="320dp"
         android:layout_height="130dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_border"
         android:ems="10"
         android:gravity="top|start"
-        android:text="الملخص"
         android:inputType="textMultiLine"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/rounded_border"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUpdateTopicName" />
 
@@ -44,7 +44,6 @@
         android:layout_height="57dp"
         android:layout_marginTop="55dp"
         android:ems="10"
-        android:text="اسم الموضوع"
         android:inputType="textPersonName"
         android:textSize="18sp"
         android:background="@drawable/rounded_border"
@@ -55,7 +54,7 @@
 
     <Button
         android:id="@+id/UpdateVideo"
-        android:layout_width="230dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:background="@drawable/rounded_border"
@@ -71,7 +70,7 @@
 
     <Button
         android:id="@+id/UpdatePhoto"
-        android:layout_width="230dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:text="تعديل صورة"
@@ -85,7 +84,7 @@
 
     <Button
         android:id="@+id/UpdateTopic"
-        android:layout_width="230dp"
+        android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginTop="61dp"
         android:text="تعديل الكل"

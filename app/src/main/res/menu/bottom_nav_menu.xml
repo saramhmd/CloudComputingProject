@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
-    android:id="@+id/homeDoctor"
-    android:icon="@drawable/ic_baseline_person_24"
-    android:title="Home"/>
-
-    <item
-        android:id="@+id/trackDoctor"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:title="Track"/>
+        android:id="@+id/profileDoctor"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="الملف الشخصي"/>
 
     <item
         android:id="@+id/notificationDoctor"
         android:icon="@drawable/ic_baseline_notifications_24"
-        android:title="Notification"/>
-
+        android:title="الاشعارات"/>
     <item
-        android:id="@+id/profileDoctor"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="Profile"/>
+        android:id="@+id/msgDoctor"
+        android:icon="@drawable/baseline_message_24"
+        android:title="الرسائل"/>
+    <item
+    android:id="@+id/homeDoctor"
+    android:icon="@drawable/ic_baseline_home_24"
+        android:title="الصفحة الرئيسية"/>
+
+
+
+
+
+
 
 
 </menu>
