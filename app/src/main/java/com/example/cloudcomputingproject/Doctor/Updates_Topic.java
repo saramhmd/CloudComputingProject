@@ -52,6 +52,7 @@ public class Updates_Topic extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 UpdateTopic(selectedTopic);
+                startActivity(new Intent(Updates_Topic.this, DoctorHome.class));
             }
         });
         UpdatePhoto.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +86,7 @@ public class Updates_Topic extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+                                        Toast.makeText(Updates_Topic.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                                         Log.d("sara", "DocumentSnapshot successfully updated!");
                                     }
                                 })

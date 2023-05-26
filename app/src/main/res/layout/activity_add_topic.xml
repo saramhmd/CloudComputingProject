@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="إنشاء موضوع"
-        android:backgroundTint="#437EC7"
+        android:textColor="#15437A"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
 
     <Button
         android:id="@+id/addVideo"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:background="@drawable/rounded_border"
@@ -71,7 +71,7 @@
 
     <Button
         android:id="@+id/addPhoto"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:text="اضافة صورة"
@@ -85,13 +85,14 @@
 
     <Button
         android:id="@+id/addMedicalConsultingButton"
-        android:layout_width="177dp"
+        android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginTop="61dp"
         android:text="إنشاء موضوع"
         android:textSize="20sp"
         android:backgroundTint="#437EC7"
         app:cornerRadius="20dp"
+
         android:background="@drawable/rounded_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

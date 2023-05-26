@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import com.example.cloudcomputingproject.Adapter.HomeAdapter;
 import com.example.cloudcomputingproject.Patient.adapter.DetailsActivity;
-import java.util.Date;
 import com.example.cloudcomputingproject.R;
 import com.example.cloudcomputingproject.model.SelectedTopics;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -75,32 +74,32 @@ public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemCli
     private void getAllSelectedTopics() {
 
         db.collection("medical consulting").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
-                    String id = document.getId();
-                    String advice = document.getString("advice");
-                    String topicName = document.getString("topicName");
-                    String image = document.getString("image");
-                    String videoUri = document.getString("video");
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                        String id = document.getId();
+                        String advice = document.getString("advice");
+                        String topicName = document.getString("topicName");
+                        String image = document.getString("image");
+                        String videoUri = document.getString("video");
 
 
-                    SelectedTopics task1 = new SelectedTopics(id,advice,topicName,image,videoUri);
+                        SelectedTopics task1 = new SelectedTopics(id,advice,topicName,image,videoUri);
 
-                    mData.add(task1);
-                    HomeAdapter adapter = new HomeAdapter(DoctorHome.this, mData);
-                    adapter.setClickListener(DoctorHome.this);
-                    rv.setLayoutManager(layoutManager);
-                    rv.setHasFixedSize(true);
-                    rv.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                    Log.e("LogDATA", task1.toString());
-                }
+                        mData.add(task1);
+                        HomeAdapter adapter = new HomeAdapter(DoctorHome.this, mData);
+                        adapter.setClickListener(DoctorHome.this);
+                        rv.setLayoutManager(layoutManager);
+                        rv.setHasFixedSize(true);
+                        rv.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                        Log.e("LogDATA", task1.toString());
+                    }
 //                    rv.setAdapter(adapter);
-                Log.e("Sara", " onSuccess  ");
+                    Log.e("Sara", " onSuccess  ");
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
+                }
+            }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.e("Sara", " onFailure  ");
@@ -110,19 +109,11 @@ public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemCli
     }
 
     public void onItemClick(SelectedTopics selectedTopic, String id) {
-        // تسجيل تاريخ ووقت العرض
-        Date currentDate = new Date(); // يتم استخدام التاريخ والوقت الحالي
-        String activityDate = currentDate.toString(); // تحويل التاريخ والوقت إلى سلسلة نصية
-
-        // قم بتحديث قاعدة البيانات أو مخزن البيانات بتاريخ ووقت العرض للعميل الحالي والموضوع المعروض
-        // يمكنك استخدام Firebase Realtime Database أو أي أداة تخزين بيانات تفضلها
-
         Intent intent = new Intent(DoctorHome.this, TopicDetails.class);
         intent.putExtra("selectedTopic", selectedTopic);
         intent.putExtra("topicId", id);
         startActivity(intent);
         finish();
     }
-
 
 }
