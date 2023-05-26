@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Video View -->
+    <VideoView
+        android:id="@+id/videoViewTopic"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Image View -->
+    <ImageView
+        android:id="@+id/imageViewTopic"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/videoViewTopic"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop" />
+
+    <!-- Topic Name EditText -->
+    <TextView
+        android:id="@+id/editTextTopicName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewTopic"
+        android:layout_marginTop="16dp"
+        android:hint="Enter topic name" />
+
+    <!-- Advice EditText -->
+    <EditText
+        android:id="@+id/editTextAdvice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextTopicName"
+        android:layout_marginTop="16dp"
+        android:hint="Enter advice" />
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextAdvice"
+        android:layout_marginTop="16dp"
+        android:text="Save"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

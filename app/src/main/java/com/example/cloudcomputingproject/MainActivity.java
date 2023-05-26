@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, DoctorOrPatient.class));
                 finish();
             }
-        }, 5000);
+        }, 2000);
+    }
     }
 
     @Override

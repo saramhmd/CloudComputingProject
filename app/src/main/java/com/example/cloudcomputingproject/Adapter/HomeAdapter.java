@@ -55,41 +55,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(HomeAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         SelectedTopics selectedTopics = mData.get(position);
-//        RequestOptions requestOptions = new RequestOptions()
-//                .diskCacheStrategy(DiskCacheStrategy.ALL);
-//        holder.tvTopicDetailes.setText(selectedTopics.getAdvice());
+
         holder.tvTopicName.setText(selectedTopics.getTopicName());
         Glide.with(context).load(selectedTopics.getImageUri())
                 .into(holder.topicPhoto);
-//        holder.edit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mClickListener.onItemClick(holder.getAdapterPosition());
-//
-//            }
-//        });
-//        holder.visible.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                mClickListener.onItemClick(holder.getAdapterPosition(), mData.get(position).id);
-//
-//            }
-//        });
-//        holder.delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                mClickListener.onItemClick(holder.getAdapterPosition(), mData.get(position).id);
-//
-//            }
-//        });
 
-//        holder.card.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                itemClickListener2.onItemClick2(holder.getAdapterPosition());
-//
-//            }
-//        });
     }
 
     @Override
@@ -109,7 +79,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             this.tvTopicName = itemView.findViewById(R.id.tvTopicName);
 //            this.tvTopicDetailes = itemView.findViewById(R.id.tvTopicDetailes);
             this.delete = itemView.findViewById(R.id.delete);
-            this.edit = itemView.findViewById(R.id.edit);
             this.visible = itemView.findViewById(R.id.visibility);
             this.topicPhoto = itemView.findViewById(R.id.topicImage);
             this.card = itemView.findViewById(R.id.card);
@@ -135,15 +104,5 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         return mData.get(id);
     }
 
-//    void setClickListener(ItemClickListener itemClickListener) {
-//        this.mClickListener = itemClickListener;
-//    }
-//
-//    public interface ItemClickListener {
-//        void onItemClick(int position);
-//    }
-//
-//    public interface ItemClickListener2{
-//        void onItemClick2(int position);
-//}
+
 }

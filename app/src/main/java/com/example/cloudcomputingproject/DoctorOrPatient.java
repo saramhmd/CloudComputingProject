@@ -16,13 +16,13 @@ public class DoctorOrPatient extends AppCompatActivity {
         Button doctorButton = findViewById(R.id.doctorButton);
         Button patientButton = findViewById(R.id.patientButton);
         doctorButton.setOnClickListener(view -> {
-            Intent intent = new Intent(DoctorOrPatient.this, SignupActivity.class);
+            Intent intent = new Intent(DoctorOrPatient.this, SigninActivity.class);
             intent.putExtra("userType", 1); // userType=1 for doctors
             startActivity(intent);
         });
 
         patientButton.setOnClickListener(v -> {
-            Intent intent = new Intent(DoctorOrPatient.this, SignupActivity.class);
+            Intent intent = new Intent(DoctorOrPatient.this, SigninActivity.class);
             intent.putExtra("userType", 0); // userType=0 for patients
             startActivity(intent);
         });

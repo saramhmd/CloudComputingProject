@@ -6,7 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import com.example.cloudcomputingproject.Patient.adapter.Adapter.MyAdapter2;
-import com.example.cloudcomputingproject.message.AllAccountsActivity;
+import com.example.cloudcomputingproject.chatapp.MainActivity5;
 import com.example.cloudcomputingproject.model.SelectedTopics;
 import com.example.cloudcomputingproject.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,7 +50,7 @@ public class HomePatientActivity extends AppCompatActivity implements MyAdapter2
                     startActivity(new Intent(HomePatientActivity.this, NotificationPatientActivity.class));
                     return true;
                 case R.id.msgPatient:
-                    startActivity(new Intent(HomePatientActivity.this, AllAccountsActivity.class));
+                    startActivity(new Intent(HomePatientActivity.this, MainActivity5.class));
                     return true;
                 default:
                     return false;
@@ -72,25 +72,25 @@ public class HomePatientActivity extends AppCompatActivity implements MyAdapter2
             }
 
             CollectionReference medicalConsultingRef = FirebaseFirestore.getInstance().collection("medical consulting");
-                medicalConsultingRef.whereIn("topicName", topicNames).get().addOnSuccessListener(queryDocumentSnapshots1 -> {
-                    List<SelectedTopics> mData = new ArrayList<>();
-                    for (DocumentSnapshot document : queryDocumentSnapshots1.getDocuments()) {
+            medicalConsultingRef.whereIn("topicName", topicNames).get().addOnSuccessListener(queryDocumentSnapshots1 -> {
+                List<SelectedTopics> mData = new ArrayList<>();
+                for (DocumentSnapshot document : queryDocumentSnapshots1.getDocuments()) {
 
-                        String id = document.getId();
-                        String advice = document.getString("advice");
-                        String topicName = document.getString("topicName");
-                        String image = document.getString("image");
-                        String videoUri = document.getString("video");
+                    String id = document.getId();
+                    String advice = document.getString("advice");
+                    String topicName = document.getString("topicName");
+                    String image = document.getString("image");
+                    String videoUri = document.getString("video");
 
 
-                        SelectedTopics task1 = new SelectedTopics(id,advice,topicName,image,videoUri);
-                        mData.add(task1);
-                    }
-                    MyAdapter2 adapter = new MyAdapter2(HomePatientActivity.this, mData);
-                    adapter.setClickListener(HomePatientActivity.this);
+                    SelectedTopics task1 = new SelectedTopics(id,advice,topicName,image,videoUri);
+                    mData.add(task1);
+                }
+                MyAdapter2 adapter = new MyAdapter2(HomePatientActivity.this, mData);
+                adapter.setClickListener(HomePatientActivity.this);
 
-                    recyclerView.setAdapter(adapter);
-                });
+                recyclerView.setAdapter(adapter);
+            });
 
         });
     }

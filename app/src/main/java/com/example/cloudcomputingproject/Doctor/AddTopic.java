@@ -146,13 +146,13 @@ public class AddTopic extends AppCompatActivity {
             uriImage = data.getData();
             uploadFile();
         }
-         if (requestCode == PICK_VIDEO && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == PICK_VIDEO && resultCode == RESULT_OK && data != null && data.getData() != null) {
             uriVideo = data.getData();
             uploadVideoFile(uriVideo);
         }
     }
 
-        private String getFiLExtention(Uri uri) {
+    private String getFiLExtention(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));

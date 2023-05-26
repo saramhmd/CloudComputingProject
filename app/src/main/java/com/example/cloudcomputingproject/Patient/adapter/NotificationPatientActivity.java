@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.cloudcomputingproject.R;
-import com.example.cloudcomputingproject.message.AllAccountsActivity;
+import com.example.cloudcomputingproject.chatapp.MainActivity5;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -35,7 +35,7 @@ public class NotificationPatientActivity extends AppCompatActivity {
                     return true;
 
                 case R.id.msgPatient:
-                    startActivity(new Intent(NotificationPatientActivity.this, AllAccountsActivity.class));
+                    startActivity(new Intent(NotificationPatientActivity.this, MainActivity5.class));
                     return true;
 
                 case R.id.notificationPatient:
