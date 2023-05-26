@@ -59,6 +59,7 @@ public class AddTopic extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addToFirebase();
+                startActivity(new Intent(AddTopic.this, DoctorHome.class));
             }
         });
         buttonAddPH.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +82,6 @@ public class AddTopic extends AppCompatActivity {
             }
         });
     }
-
-
     private void uploadVideoFile(Uri videoUri) {
         if (videoUri != null) {
             StorageReference fileReference = mstorageRef.child(System.currentTimeMillis() + "." + getFiLExtentionVideo(videoUri));
@@ -133,26 +132,25 @@ public class AddTopic extends AppCompatActivity {
 
 
 /////////////////////////////////////////////////////////////////////////////////
-
-    private void openFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
+private void openFileChooser() {
+    Intent intent = new Intent();
+    intent.setType("image/*");
+    intent.setAction(Intent.ACTION_GET_CONTENT);
+    startActivityForResult(intent, PICK_IMAGE_REQUEST);
+}
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             uriImage = data.getData();
             uploadFile();
         }
-         if (requestCode == PICK_VIDEO && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == PICK_VIDEO && resultCode == RESULT_OK && data != null && data.getData() != null) {
             uriVideo = data.getData();
             uploadVideoFile(uriVideo);
         }
     }
 
-        private String getFiLExtention(Uri uri) {
+    private String getFiLExtention(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
@@ -224,8 +222,8 @@ public class AddTopic extends AppCompatActivity {
 
         } else {
             Toast.makeText(this, "Please Fill fields", Toast.LENGTH_SHORT).show();
-        }
+   }
 
-    }
+}
 
 }

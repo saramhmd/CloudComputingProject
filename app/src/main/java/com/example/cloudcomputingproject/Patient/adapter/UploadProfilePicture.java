@@ -80,7 +80,6 @@ public class UploadProfilePicture extends AppCompatActivity {
         Intent intent1 = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
         startActivityForResult(intent1, PICK_IMAGE_REQUEST);
-
     }
 
 

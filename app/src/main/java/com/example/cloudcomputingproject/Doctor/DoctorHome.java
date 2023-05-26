@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,10 +25,14 @@ import java.util.List;
 
 public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemClickListener {
     BottomNavigationView nav;
+    Boolean dataVisible = true;
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<SelectedTopics> mData = new ArrayList<>();
     HomeAdapter adapter;
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+//    RecyclerView recyclerView = ;
+
     RecyclerView rv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,10 @@ public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemCli
         adapter = new HomeAdapter(this, mData);
         rv.setAdapter(adapter);
         getAllSelectedTopics();
+
+        if (!dataVisible) {
+            rv.setVisibility(View.GONE); // Hide the RecyclerView or its items
+        }
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -112,8 +121,55 @@ public class DoctorHome extends AppCompatActivity implements HomeAdapter.ItemCli
         Intent intent = new Intent(DoctorHome.this, TopicDetails.class);
         intent.putExtra("selectedTopic", selectedTopic);
         intent.putExtra("topicId", id);
+//        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+//        boolean dataVisible = sharedPreferences.getBoolean("dataVisible", true);
+//
+//        // Update the visibility of the RecyclerView or its items based on the dataVisible state
+//        if (!dataVisible) {
+//            rv.setVisibility(View.GONE); // Hide the RecyclerView or its items
+//        } else {
+//            rv.setVisibility(View.VISIBLE); // Show the RecyclerView or its items
+//        }
+
         startActivity(intent);
         finish();
     }
+
+
+//    protected void onResume() {
+//        super.onResume();
+//
+//        // Retrieve the visibility state from SharedPreferences or Intent
+//        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+//        dataVisible = sharedPreferences.getBoolean("dataVisible", true);
+//
+//        // Update the visibility of the RecyclerView or its items based on the dataVisible state
+//        if (!dataVisible) {
+//            rv.setVisibility(View.GONE); // Hide the RecyclerView or its items
+//        } else {
+//            rv.setVisibility(View.VISIBLE); // Show the RecyclerView or its items
+//        }
+//    }
+
+
+//    public void onItemClick1(SelectedTopics selectedTopic, String id) {
+//        Intent intent = new Intent(DoctorHome.this, TopicDetails.class);
+//        intent.putExtra("selectedTopic", selectedTopic);
+//        intent.putExtra("topicId", id);
+//
+//        // Retrieve the visibility state from SharedPreferences or Intent
+//        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+//        boolean dataVisible = sharedPreferences.getBoolean("dataVisible", true);
+//
+//        // Update the visibility of the RecyclerView or its items based on the dataVisible state
+//        if (!dataVisible) {
+//            rv.setVisibility(View.GONE); // Hide the RecyclerView or its items
+//        } else {
+//            rv.setVisibility(View.VISIBLE); // Show the RecyclerView or its items
+//        }
+//
+//        startActivity(intent);
+//        finish();
+//    }
 
 }

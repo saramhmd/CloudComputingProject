@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "427959291546",
+    "firebase_url": "https://mobile-cloud-application-default-rtdb.firebaseio.com",
     "project_id": "mobile-cloud-application",
     "storage_bucket": "mobile-cloud-application.appspot.com"
   },

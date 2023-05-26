@@ -100,7 +100,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView tvTopicName,tvTopicDetailes;
-        public ImageView delete,edit,visible , topicPhoto;
+        public ImageView topicPhoto;
         public CardView card;
         private String id;
 
@@ -108,9 +108,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             super(itemView);
             this.tvTopicName = itemView.findViewById(R.id.tvTopicName);
 //            this.tvTopicDetailes = itemView.findViewById(R.id.tvTopicDetailes);
-            this.delete = itemView.findViewById(R.id.delete);
-            this.edit = itemView.findViewById(R.id.edit);
-            this.visible = itemView.findViewById(R.id.visibility);
+//            this.delete = itemView.findViewById(R.id.delete);
+//            this.edit = itemView.findViewById(R.id.edit);
+//            this.visible = itemView.findViewById(R.id.visibility);
             this.topicPhoto = itemView.findViewById(R.id.topicImage);
             this.card = itemView.findViewById(R.id.card);
             itemView.setOnClickListener(this);

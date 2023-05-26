@@ -72,6 +72,7 @@ public class UpdateVideo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 uploadVideoFile(videoUri);
+                startActivity(new Intent(UpdateVideo.this, DoctorHome.class));
             }
         });
     }

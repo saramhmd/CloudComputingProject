@@ -51,7 +51,7 @@
         android:layoutDirection="rtl"/>
 
     <TextView
-        android:id="@+id/adviceTextView"
+        android:id="@+id/topicNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
@@ -70,7 +70,7 @@
             android:layoutDirection="rtl"/>
 
     <TextView
-        android:id="@+id/topicNameTextView"
+        android:id="@+id/adviceTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -98,11 +98,6 @@
         android:textSize="18sp"
         android:text="رجوع"
         android:textColor="#0000EE" />
-        <View
-            android:layout_width="40dp"
-            android:layout_height="1dp"
-            android:layout_marginLeft="335dp"
-            android:background="#0000EE"
-            android:layout_below="@id/back" />
+
 </LinearLayout>
 </RelativeLayout>
